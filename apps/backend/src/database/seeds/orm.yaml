@@ -1,16 +1,16 @@
 default:
   type: postgres
   host: 127.0.0.1
-  port: 5434
+  port: 5454
   username: root
   password: root
-  database: email_admin
+  database: smplct_view_app
   entities:
     - ./apps/backend/src/**/*.entity.ts
   migrations:
-    - ./apps/backend/src/database/seeds/*{.ts,.js}
+    - ./apps/backend/src/database/seed/*{.ts,.js}
   cli:
     migrationsDir:
-      - ./apps/backend/src/database/seeds
+      - ./apps/backend/src/database/seed
     entitiesDir:
       - apps/backend/src/**/*.entity{.ts,.js}

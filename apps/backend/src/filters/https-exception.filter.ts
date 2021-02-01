@@ -12,8 +12,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
     }
 
     prepareException(exc: any): { status: number; json: Record<string, any> } {
+        // Log exception
         if (process.env.NODE_ENV !== 'test') {
-            console.info(exc);
+            if (exc.status !== 404) {
+                console.info(exc);
+            }
         }
 
         const error =

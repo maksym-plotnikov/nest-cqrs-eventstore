@@ -1,14 +1,14 @@
 version: '3'
 
 networks:
-  nestjsx_crud:
+  smplct_view_network:
 
 services:
   postgres:
     # TypeORM fails with Postgres v.12
     image: postgres:11.5
     ports:
-      - 5434:5432
+      - 5454:5432
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root

@@ -1,10 +1,10 @@
 default:
   type: postgres
   host: 127.0.0.1
-  port: 5434
+  port: 5454
   username: root
   password: root
-  database: email_admin
+  database: smplct_view_app
   logging:
     - warn
     - error

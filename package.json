@@ -33,10 +33,10 @@
         "migration:generate": "scripty",
         "migration:revert": "scripty",
         "migration:run": "scripty",
-        "seeds:run": "scripty",
-        "watch:dev": "nx run-many --target=serve --projects=frontend,api --parallel",
-        "watch:e2e": "nx run-many --target=serve --projects=api--parallel",
-        "build:api": "nx run-many --target=build --projects=frontend,api"
+        "seed:run": "scripty",
+        "watch:dev": "nx run-many --target=serve --projects=frontend,backend --parallel",
+        "watch:e2e": "nx run-many --target=serve --projects=backend --parallel",
+        "build:all": "nx run-many --target=build --projects=frontend,backend"
     },
     "private": true,
     "dependencies": {
