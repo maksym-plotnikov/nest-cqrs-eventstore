@@ -12,15 +12,15 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: email_admin
+      POSTGRES_DB: smplct_view_app
     volumes:
       - ./.db-data:/var/lib/postgresql/data
     networks:
-      - nestjsx_crud
+      - smplct_view_network
   redis:
     image: redis:alpine
     ports:
       - 6399:6379
     command: redis-server
     networks:
-      - nestjsx_crud
+      - smplct_view_network
