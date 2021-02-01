@@ -1,1 +1,1 @@
-# smplct_view
+# Simplicity VIEW app
