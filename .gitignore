@@ -43,7 +43,7 @@ Thumbs.db
 
 /apps/*/logs/*
 !/apps/backend/logs/.gitkeep
-/apps/*/.env
+/apps/*/*.env
 /.eslintcache
 /.stylelintcache
 /ormlogs.log
