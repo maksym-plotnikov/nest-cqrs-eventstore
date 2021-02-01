@@ -1,0 +1,20 @@
+default:
+  type: postgres
+  host: 127.0.0.1
+  port: 5434
+  username: root
+  password: root
+  database: email_admin
+  logging:
+    - warn
+    - error
+  logger: file
+  entities:
+    - ./apps/api/app/**/*.entity.ts
+  migrations:
+    - ./apps/api/app/database/migrations/*{.ts,.js}
+  cli:
+    migrationsDir:
+      - ./apps/api/app/database/migrations
+    entitiesDir:
+      - apps/api/app/**/*.entity{.ts,.js}

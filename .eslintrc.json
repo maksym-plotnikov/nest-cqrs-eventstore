@@ -1,0 +1,65 @@
+{
+    "root": true,
+    "ignorePatterns": ["**/*"],
+    "plugins": ["@nrwl/nx"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "extends": ["plugin:@nrwl/nx/typescript"],
+            "parserOptions": {
+                "project": "./tsconfig.*?.json",
+                "createDefaultProgram": true
+            },
+            "rules": {
+                "no-console": [
+                    "error",
+                    {
+                        "allow": ["info", "error"]
+                    }
+                ],
+                "@typescript-eslint/ban-ts-ignore": "off",
+                "@typescript-eslint/no-explicit-any": "off",
+                "@typescript-eslint/no-empty-function": [
+                    "error",
+                    { "allow": ["arrowFunctions"] }
+                ],
+                "@nrwl/nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "enforceBuildableLibDependency": true,
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "*",
+                                "onlyDependOnLibsWithTags": ["*"]
+                            }
+                        ]
+                    }
+                ],
+                "@typescript-eslint/ban-types": [
+                    "error",
+                    {
+                        "types": {
+                            "a": null,
+                            "A": null,
+                            "object": {
+                                "message": "Use Record<string, any> instead",
+                                "fixWith": "Record<string, any>"
+                            },
+                            "Object": {
+                                "message": "Use Record<string, any> instead",
+                                "fixWith": "Record<string, any>"
+                            }
+                        }
+                    }
+                ],
+                "@typescript-eslint/ban-ts-comment": [
+                    "error",
+                    {
+                        "ts-ignore": "allow-with-description"
+                    }
+                ]
+            }
+        }
+    ]
+}

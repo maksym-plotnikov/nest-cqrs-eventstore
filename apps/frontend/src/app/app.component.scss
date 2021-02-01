@@ -1,0 +1,134 @@
+/*
+ * Remove template code below
+ */
+:host {
+    display: block;
+    font-family: sans-serif;
+    margin: 50px auto;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.gutter-left {
+    margin-left: 9px;
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+.flex {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+header {
+    background-color: #143055;
+    border-radius: 3px;
+    color: #fff;
+    padding: 5px;
+}
+
+main {
+    padding: 0 36px;
+}
+
+p {
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-left: 18px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 40px 0 10px;
+    text-align: center;
+}
+
+.resources {
+    display: grid;
+    grid-gap: 9px;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.resource {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: #0094ba;
+    height: 36px;
+    padding: 3px 9px;
+    text-decoration: none;
+}
+
+.resource:hover {
+    background-color: rgba(68, 138, 255, 0.04);
+}
+
+pre {
+    background-color: #000;
+    border-radius: 4px;
+    color: #eee;
+    padding: 9px;
+}
+
+details {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: #333;
+    margin-bottom: 9px;
+    padding: 3px 9px;
+}
+
+summary {
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    outline: none;
+}
+
+.github-star-container {
+    line-height: 20px;
+    margin-top: 12px;
+}
+
+.github-star-container a {
+    align-items: center;
+    color: #333;
+    display: flex;
+    text-decoration: none;
+}
+
+.github-star-badge {
+    align-items: center;
+    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    border-radius: 3px;
+    color: #24292e;
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 4px;
+    padding: 3px 10px;
+}
+
+.github-star-badge:hover {
+    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+    background-position: -0.5em;
+    border-color: rgba(27, 31, 35, 0.35);
+}
+
+.github-star-badge .material-icons {
+    height: 16px;
+    margin-right: 4px;
+    width: 16px;
+}
