@@ -4,7 +4,7 @@ import { MigrationInterface, Repository, QueryRunner } from 'typeorm';
 import { ClassType } from 'class-transformer/types/ClassTransformer';
 import { Company } from '../../modules/companies/company.entity';
 import { User } from '../../modules/users/user.entity';
-import { RoleType } from '../../constants';
+import { RoleType } from '@smplct-view/shared/constants';
 
 export class Seeds1610059309488 implements MigrationInterface {
     private save<T>(repo: Repository<T>, data: Partial<T>[]): Promise<T[]> {

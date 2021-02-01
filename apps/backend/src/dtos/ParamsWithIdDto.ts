@@ -1,6 +1,6 @@
 import { IsString, IsNotEmpty, IsUUID } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { locales } from '../constants';
+import { locales } from '@smplct-view/shared/constants';
 
 export class ParamsWithIdDto {
     @IsUUID()

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsEmail, MinLength, IsNotEmpty } from 'class-validator';
-import { locales } from '../../../constants';
+import { locales } from '@smplct-view/shared/constants';
 
 export class UserRegisterDto {
     // @IsString({ message: locales.messages.IS_STRING })

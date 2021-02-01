@@ -28,7 +28,7 @@ import {
     LoginResponseErrorDto,
 } from './dto';
 import { AuthUser, Roles } from '../../decorators';
-import { RoleType } from '../../constants';
+import { RoleType } from '@smplct-view/shared/constants';
 
 @Controller('auth')
 @ApiTags('auth')

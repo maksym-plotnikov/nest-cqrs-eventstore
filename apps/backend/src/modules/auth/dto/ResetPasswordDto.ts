@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
-import { locales } from '../../../constants';
+import { locales } from '@smplct-view/shared/constants';
 
 export class ResetPasswordDto {
     @IsUUID()

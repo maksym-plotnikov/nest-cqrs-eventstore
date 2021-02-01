@@ -10,7 +10,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { CrudConfigService } from '@nestjsx/crud';
 import { SharedModule } from './src/shared.module';
 import { ConfigService } from './src/shared/services';
-import { USER_REQUEST_KEY } from './src/constants';
+import { USER_REQUEST_KEY } from '@smplct-view/shared/constants';
 import { QueryFailedFilter, HttpExceptionFilter } from './src/filters';
 import {
     initializeTransactionalContext,

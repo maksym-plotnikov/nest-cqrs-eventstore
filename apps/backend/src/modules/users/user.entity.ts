@@ -12,7 +12,7 @@ import { CrudValidationGroups } from '@nestjsx/crud';
 import { BaseEntity } from '../../base-entity';
 import { Company } from '../companies/company.entity';
 import { PasswordTransformer } from './password.transformer';
-import { RoleType } from '../../constants';
+import { RoleType } from '@smplct-view/shared/constants';
 const { CREATE, UPDATE } = CrudValidationGroups;
 
 // tslint:disable-next-line:max-classes-per-file

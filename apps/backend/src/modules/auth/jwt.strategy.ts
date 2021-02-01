@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users';
 import { ConfigService } from '../../shared/services';
-import { JWT_ERROR } from '../../constants';
+import { JWT_ERROR } from '@smplct-view/shared/constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

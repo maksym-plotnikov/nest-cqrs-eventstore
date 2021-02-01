@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 
 import { UsersService } from './modules/users';
-import { USER_REQUEST_KEY } from './constants';
+import { USER_REQUEST_KEY } from '@smplct-view/shared/constants';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

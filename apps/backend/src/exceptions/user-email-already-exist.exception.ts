@@ -1,5 +1,5 @@
 import { ConflictException } from '@nestjs/common';
-import { ErrorSource } from '../constants';
+import { ErrorSource } from '@smplct-view/shared/constants';
 
 export class UserEmailAlreadyExistException extends ConflictException {
     constructor(message?: string | Record<string, any> | any, error?: string) {

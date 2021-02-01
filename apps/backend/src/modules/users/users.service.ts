@@ -5,7 +5,7 @@ import { User } from './user.entity';
 import { UserLoginDto } from '../auth/dto';
 import { UtilsService } from '../../shared/services';
 import { NoContentException } from '../../exceptions';
-import { locales } from '../../constants';
+import { locales } from '@smplct-view/shared/constants';
 
 @Injectable()
 export class UsersService extends TypeOrmCrudService<User> {

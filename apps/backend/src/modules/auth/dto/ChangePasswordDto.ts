@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { locales } from '../../../constants';
+import { locales } from '@smplct-view/shared/constants';
 
 export class ChangePasswordDto {
     @IsString({ message: locales.messages.IS_STRING })
