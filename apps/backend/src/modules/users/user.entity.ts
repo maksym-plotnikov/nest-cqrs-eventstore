@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToOne, ManyToMany } from 'typeorm';
+import { Entity, Column, ManyToOne } from 'typeorm';
 import {
     IsOptional,
     IsString,

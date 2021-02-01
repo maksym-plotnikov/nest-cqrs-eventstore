@@ -33,17 +33,6 @@ import { AuthUserInterceptor } from '../../interceptors';
                 exclude: ['password'],
                 eager: true,
             },
-            // 'users.projects': {
-            //     eager: true,
-            //     alias: 'usersProjects',
-            // },
-            // 'users.projects.company': {
-            //     eager: true,
-            //     alias: 'usersProjectsCompany',
-            // },
-            projects: {
-                eager: true,
-            },
         },
     },
 })

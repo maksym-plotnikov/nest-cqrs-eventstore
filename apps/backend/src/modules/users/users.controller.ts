@@ -30,10 +30,6 @@ import { AuthUserInterceptor } from '../../interceptors';
             company: {
                 exclude: ['description'],
             },
-            'company.projects': {
-                alias: 'pr',
-                exclude: ['description'],
-            },
         },
     },
 })
