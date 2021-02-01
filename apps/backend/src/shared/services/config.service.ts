@@ -6,7 +6,7 @@ export class ConfigService {
     constructor() {
         const nodeEnv = this.nodeEnv;
         dotenv.config({
-            path: `./apps/api/.${nodeEnv}.env`,
+            path: `./apps/backend/.${nodeEnv}.env`,
         });
         // Replace \\n with \n to support multiline strings in AWS
         for (const envName of Object.keys(process.env)) {
@@ -75,8 +75,10 @@ export class ConfigService {
     }
 
     get typeOrmConfig(): TypeOrmModuleOptions {
-        const entities = [__dirname + '/apps/api/app/**/*.entity{.ts,.js}'];
-        const migrations = [__dirname + '/apps/api/app/database/migrations/*{.ts,.js}'];
+        const entities = [__dirname + '/apps/backend/src/**/*.entity{.ts,.js}'];
+        const migrations = [
+            __dirname + '/apps/backend/src/database/migrations/*{.ts,.js}',
+        ];
 
         return {
             entities,

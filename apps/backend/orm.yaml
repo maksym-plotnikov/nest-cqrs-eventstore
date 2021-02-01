@@ -10,11 +10,11 @@ default:
     - error
   logger: file
   entities:
-    - ./apps/api/app/**/*.entity.ts
+    - ./apps/backend/src/**/*.entity.ts
   migrations:
-    - ./apps/api/app/database/migrations/*{.ts,.js}
+    - ./apps/backend/src/database/migrations/*{.ts,.js}
   cli:
     migrationsDir:
-      - ./apps/api/app/database/migrations
+      - ./apps/backend/src/database/migrations
     entitiesDir:
-      - apps/api/app/**/*.entity{.ts,.js}
+      - apps/backend/src/**/*.entity{.ts,.js}

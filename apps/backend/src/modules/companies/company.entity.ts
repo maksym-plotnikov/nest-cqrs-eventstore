@@ -13,7 +13,6 @@ import { Type } from 'class-transformer';
 
 import { BaseEntity } from '../../base-entity';
 import { User } from '../users/user.entity';
-import { Project } from '../projects/project.entity';
 
 const { CREATE, UPDATE } = CrudValidationGroups;
 
@@ -60,11 +59,4 @@ export class Company extends BaseEntity {
     })
     @Type(() => User)
     users: User[];
-
-    @OneToMany(() => Project, project => project.company, {
-        cascade: ['insert', 'update'],
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-    })
-    projects: Project[];
 }

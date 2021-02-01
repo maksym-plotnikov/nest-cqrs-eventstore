@@ -6,11 +6,11 @@ default:
   password: root
   database: email_admin
   entities:
-    - ./apps/api/app/**/*.entity.ts
+    - ./apps/backend/src/**/*.entity.ts
   migrations:
-    - ./apps/api/app/database/seeds/*{.ts,.js}
+    - ./apps/backend/src/database/seeds/*{.ts,.js}
   cli:
     migrationsDir:
-      - ./apps/api/app/database/seeds
+      - ./apps/backend/src/database/seeds
     entitiesDir:
-      - apps/api/app/**/*.entity{.ts,.js}
+      - apps/backend/src/**/*.entity{.ts,.js}

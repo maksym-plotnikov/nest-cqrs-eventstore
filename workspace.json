@@ -8,7 +8,7 @@
     "projects": {
         "backend": {
             "root": "apps/backend",
-            "sourceRoot": "apps/backend/src",
+            "sourceRoot": "apps/backend",
             "projectType": "application",
             "prefix": "backend",
             "targets": {
@@ -17,10 +17,9 @@
                     "outputs": ["{options.outputPath}"],
                     "options": {
                         "outputPath": "dist/apps/backend",
-                        "main": "apps/backend/src/main.ts",
+                        "main": "apps/backend/main.ts",
                         "tsConfig": "apps/backend/tsconfig.app.json",
-                        "showCircularDependencies": false,
-                        "assets": ["apps/backend/src/assets"]
+                        "showCircularDependencies": false
                     },
                     "configurations": {
                         "production": {
@@ -29,8 +28,8 @@
                             "inspect": false,
                             "fileReplacements": [
                                 {
-                                    "replace": "apps/backend/src/environments/environment.ts",
-                                    "with": "apps/backend/src/environments/environment.prod.ts"
+                                    "replace": "apps/backend/environments/environment.ts",
+                                    "with": "apps/backend/environments/environment.prod.ts"
                                 }
                             ]
                         }

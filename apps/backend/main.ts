@@ -8,10 +8,10 @@ import * as bodyParser from 'body-parser';
 import * as RateLimit from 'express-rate-limit';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { CrudConfigService } from '@nestjsx/crud';
-import { SharedModule } from './app/shared.module';
-import { ConfigService } from './app/shared/services';
-import { USER_REQUEST_KEY } from './app/constants';
-import { QueryFailedFilter, HttpExceptionFilter } from './app/filters';
+import { SharedModule } from './src/shared.module';
+import { ConfigService } from './src/shared/services';
+import { USER_REQUEST_KEY } from './src/constants';
+import { QueryFailedFilter, HttpExceptionFilter } from './src/filters';
 import {
     initializeTransactionalContext,
     patchTypeORMRepositoryWithBaseRepository,
@@ -26,7 +26,7 @@ CrudConfigService.load({
         exclude: ['createManyBase'],
     },
 });
-import { AppModule } from './app/app.module';
+import { AppModule } from './src/app.module';
 
 async function bootstrap() {
     initializeTransactionalContext();

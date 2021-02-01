@@ -11,7 +11,6 @@ import { CrudValidationGroups } from '@nestjsx/crud';
 
 import { BaseEntity } from '../../base-entity';
 import { Company } from '../companies/company.entity';
-import { Project } from '../projects/project.entity';
 import { PasswordTransformer } from './password.transformer';
 import { RoleType } from '../../constants';
 const { CREATE, UPDATE } = CrudValidationGroups;
@@ -63,7 +62,4 @@ export class User extends BaseEntity {
         onDelete: 'CASCADE',
     })
     company: Company;
-
-    @ManyToMany(() => Project, project => project.users)
-    projects: Project[];
 }

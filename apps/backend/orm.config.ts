@@ -23,10 +23,10 @@ export const withCache: TypeOrmModuleOptions = {
         },
     },
     logging: ['query', 'error', 'warn'],
-    entities: ['../../apps/api/app/**/*.entity{.ts,.js}'],
-    migrations: ['../../apps/api/app/database/migrations/*{.ts,.js}'],
+    entities: ['../../apps/backend/src/**/*.entity{.ts,.js}'],
+    migrations: ['../../apps/backend/src/database/migrations/*{.ts,.js}'],
     cli: {
-        migrationsDir: '../../apps/api/app/database/migrations',
-        entitiesDir: '../../apps/api/app/**/*.entity{.ts,.js}',
+        migrationsDir: '../../apps/backend/src/database/migrations',
+        entitiesDir: '../../apps/backend/src/**/*.entity{.ts,.js}',
     },
 };
