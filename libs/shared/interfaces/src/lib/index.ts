@@ -1,1 +1,1 @@
-export * from './common';
+export * from './response-error.interface';
