@@ -109,7 +109,7 @@
                                 }
                             ],
                             "serviceWorker": true,
-                            "ngswConfigPath": "ngsw-config.json"
+                            "ngswConfigPath": "apps/frontend/ngsw-config.json"
                         }
                     }
                 },

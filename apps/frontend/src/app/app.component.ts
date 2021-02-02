@@ -11,7 +11,7 @@ interface TestTitle {
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    title: string;
+    title = '';
 
     constructor(private http: HttpClient) {
         this.fetch();
