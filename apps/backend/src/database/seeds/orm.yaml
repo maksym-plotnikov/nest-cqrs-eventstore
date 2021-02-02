@@ -8,9 +8,9 @@ default:
   entities:
     - ./apps/backend/src/**/*.entity.ts
   migrations:
-    - ./apps/backend/src/database/seed/*{.ts,.js}
+    - ./apps/backend/src/database/seeds/*{.ts,.js}
   cli:
     migrationsDir:
-      - ./apps/backend/src/database/seed
+      - ./apps/backend/src/database/seeds
     entitiesDir:
       - apps/backend/src/**/*.entity{.ts,.js}

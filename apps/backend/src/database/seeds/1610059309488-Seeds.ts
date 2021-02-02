@@ -46,7 +46,6 @@ export class Seeds1610059309488 implements MigrationInterface {
             { name: 'Company 1', domain: 'Domain1' },
             { name: 'Company 2', domain: 'Domain2' },
         ]);
-        await queryRunner.release();
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

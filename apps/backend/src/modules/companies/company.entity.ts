@@ -51,6 +51,7 @@ export class Company extends BaseEntity {
      * Relations
      */
 
+    @IsOptional({ groups: [CREATE, UPDATE] })
     @OneToMany(() => User, user => user.company, {
         cascade: ['insert', 'update'],
         onDelete: 'CASCADE',
