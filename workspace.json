@@ -75,7 +75,8 @@
                         "aot": true,
                         "assets": [
                             "apps/frontend/src/favicon.ico",
-                            "apps/frontend/src/assets"
+                            "apps/frontend/src/assets",
+                            "apps/frontend/src/manifest.webmanifest"
                         ],
                         "styles": ["apps/frontend/src/styles.scss"],
                         "scripts": []
@@ -106,7 +107,9 @@
                                     "maximumWarning": "2kb",
                                     "maximumError": "4kb"
                                 }
-                            ]
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "ngsw-config.json"
                         }
                     }
                 },
