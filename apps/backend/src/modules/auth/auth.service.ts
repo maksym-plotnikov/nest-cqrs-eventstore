@@ -2,7 +2,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Injectable } from '@nestjs/common';
 
 import { User } from '../users/user.entity';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../users';
 import { UserLoginDto, TokenPayloadDto } from './dto';
 import { ConfigService, UtilsService } from '../../shared/services';
 import { ContextService } from '../../providers/context.service';
