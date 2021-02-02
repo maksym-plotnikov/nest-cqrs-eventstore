@@ -14,6 +14,7 @@ import {
     UseGuards,
     BadRequestException,
     Put,
+    Get,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { PlainResponseDto } from '../../dtos';
@@ -37,6 +38,18 @@ export class AuthController {
         public readonly usersService: UsersService,
         public readonly authService: AuthService,
     ) {}
+
+    /**
+     * Test
+     */
+    @Get('test')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: 'testRoute',
+    })
+    testRoute() {
+        return { message: 'VIEW APP' };
+    }
 
     /**
      * User Login

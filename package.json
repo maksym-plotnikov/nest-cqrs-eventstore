@@ -36,7 +36,7 @@
         "seed:run": "scripty",
         "watch:dev": "nx run-many --target=serve --projects=frontend,backend --parallel",
         "watch:e2e": "nx run-many --target=serve --projects=backend --parallel",
-        "build:all": "nx run-many --target=build --projects=frontend,backend"
+        "build:all": "nx run-many --target=build --projects=frontend,backend --skip-nx-cache"
     },
     "private": true,
     "dependencies": {
