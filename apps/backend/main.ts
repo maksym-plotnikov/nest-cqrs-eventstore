@@ -27,6 +27,11 @@ CrudConfigService.load({
     },
 });
 import { AppModule } from './src/app.module';
+// Node.js crashes if there is an uncaught exception, while it does not crash if there is an 'unhandledRejection',
+// i.e. a Promise without a .catch() handler. So we adding handler that prints the stacktrace and exits the
+// process with an exit code of 1, just like any uncaught exception.
+// https://www.npmjs.com/package/make-promises-safe
+require('make-promises-safe');
 
 async function bootstrap() {
     initializeTransactionalContext();
@@ -65,9 +70,8 @@ async function bootstrap() {
     if (['development'].includes(configService.nodeEnv)) {
         app.use(morgan('combined'));
         const options = new DocumentBuilder()
-            .setTitle('email-admin')
-            .setBasePath('/v1')
-            .setDescription('email-admin/crud-typeorm')
+            .setTitle('Simplicity VIEW API')
+            .setDescription('API Documentation')
             .setVersion('1.0')
             .addBearerAuth()
             .build();
@@ -83,4 +87,4 @@ async function bootstrap() {
     });
 }
 
-bootstrap();
+bootstrap().then(() => console.info('\x1b[35m', '--- API IS READY ---', '\x1b[0m'));
