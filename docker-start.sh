@@ -14,7 +14,7 @@ POSTGRES_HOST="127.0.0.1:5432"
 POSTGRES_USER="root"
 POSTGRES_PASSWORD="root"
 POSTGRES_DB="smplct_view_app"
-POSTGRES_CONTAINER_ID=$(docker ps | awk ' /postgres/ { print $1 }')
+POSTGRES_CONTAINER_ID=$(docker ps | awk ' /smplct_view_psql/ { print $1 }')
 echo "$POSTGRES_CONTAINER_ID"
 # Try to connect to PostgreSQL
 until docker exec -it $POSTGRES_CONTAINER_ID psql "postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST/$POSTGRES_DB" -c '\q'; do

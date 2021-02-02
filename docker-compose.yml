@@ -6,7 +6,8 @@ networks:
 services:
   postgres:
     # TypeORM fails with Postgres v.12
-    image: postgres:11.5
+    image: postgres:11.10
+    container_name: smplct_view_psql
     ports:
       - 5454:5432
     environment:
@@ -19,6 +20,7 @@ services:
       - smplct_view_network
   redis:
     image: redis:alpine
+    container_name: smplct_view_redis
     ports:
       - 6399:6379
     command: redis-server
