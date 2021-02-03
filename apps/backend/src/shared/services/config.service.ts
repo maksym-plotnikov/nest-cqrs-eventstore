@@ -94,6 +94,7 @@ export class ConfigService {
             migrationsRun: true,
             logging: ['query', 'error', 'warn'],
             cache: {
+                duration: 5000,
                 type: 'redis',
                 options: {
                     host: '127.0.0.1',
