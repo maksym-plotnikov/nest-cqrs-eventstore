@@ -1,0 +1,13 @@
+{
+  "cSpell.words": [
+    "ngsw",
+    "nrwl",
+    "onsen",
+    "onsenui",
+    "smplct",
+    "tabbar",
+    "touchpoints"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}

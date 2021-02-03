@@ -1,23 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { OnsenModule } from 'ngx-onsenui';
+import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+import { DashboardTabComponent } from './menu/dashboard-tab/dashboard-tab.component';
+import { PartnerTabComponent } from './menu/partner-tab/partner-tab.component';
+import { TouchpointsTabComponent } from './menu/touchpoints-tab/touchpoints-tab.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, DashboardTabComponent, PartnerTabComponent, TouchpointsTabComponent],
     imports: [
         BrowserModule,
-        RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+        OnsenModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
         }),
         HttpClientModule,
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
+    entryComponents: [ DashboardTabComponent, PartnerTabComponent, TouchpointsTabComponent],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

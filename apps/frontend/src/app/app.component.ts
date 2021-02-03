@@ -1,25 +1,16 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface TestTitle {
-    message: string;
-}
+import {
+  DashboardTabComponent,
+  PartnerTabComponent,
+  TouchpointsTabComponent
+ } from './menu';
 
 @Component({
     selector: 'smplct-view-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
-    title = '';
-
-    constructor(private http: HttpClient) {
-        this.fetch();
-    }
-
-    fetch() {
-        this.http
-            .get<TestTitle>('/api/auth/test')
-            .subscribe(t => (this.title = t.message));
-    }
+  tab1 = DashboardTabComponent;
+  tab2 = PartnerTabComponent;
+  tab3 = TouchpointsTabComponent;
 }
