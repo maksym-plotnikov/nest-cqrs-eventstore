@@ -76,6 +76,8 @@
         "make-promises-safe": "^5.1.0",
         "morgan": "^1.10.0",
         "nest-winston": "^1.4.0",
+        "ngx-onsenui": "^7.0.0",
+        "onsenui": "^2.11.2",
         "p-map": "^4.0.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",

@@ -2110,6 +2110,11 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
+"@onsenui/custom-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@onsenui/custom-elements/-/custom-elements-1.0.0.tgz#8e2b5c8968b8d94da70c6e92ecc56b47f79a0ff3"
+  integrity sha512-KhYeDFhQyE6j3xxWqyu3q8KgeuaRGUwDjuHnmS1gRri+OZ6w6CUqYPn6kidZjXz+LkU2dEp/D+BWo+9Qi6nSSQ==
+
 "@rollup/plugin-babel@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.0.2.tgz#d9351b9545b0c586a193fc99830d4b1a25317ed5"
@@ -4852,6 +4857,11 @@ core-js@3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.8.2.tgz#0a1fd6709246da9ca8eff5bb0cbd15fba9ac7044"
   integrity sha512-FfApuSRgrR6G5s58casCBd9M2k+4ikuu4wbW6pJyYU7bd9zvFc9qf7vr5xmrZOhT9nn+8uwlH1oRR9jTnFoA3A==
+
+core-js@^2.6.12:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-js@^3.6.5:
   version "3.8.3"
@@ -9897,6 +9907,11 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
+ngx-onsenui@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-onsenui/-/ngx-onsenui-7.0.0.tgz#d709a3208da22627734f9f8ed27750e6c66a31e8"
+  integrity sha512-9EORo6tw2mkbR0GR09Hw3c6EiGLrLBdoI5EPGGq03u2AcvEGcoAxZmhWhBVOFOWi0FUnsKVNDpLRT8Kq+pBxmQ==
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -10347,6 +10362,14 @@ onetime@^5.1.0:
   integrity sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==
   dependencies:
     mimic-fn "^2.1.0"
+
+onsenui@^2.11.2:
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/onsenui/-/onsenui-2.11.2.tgz#acec927bccadc83eb882d3eb9cff965bfe8aae63"
+  integrity sha512-gllq4jJvFynSt+i4oujYdkQ/lrtfWfLXsFHEyx2SsbQ7R7B0xiGNbl2l1xGjunncwvKSZ1nxmaZEbDHElUmKEw==
+  dependencies:
+    "@onsenui/custom-elements" "1.0.0"
+    core-js "^2.6.12"
 
 open@6.4.0:
   version "6.4.0"

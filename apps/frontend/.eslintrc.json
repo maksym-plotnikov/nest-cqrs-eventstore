@@ -12,11 +12,19 @@
             "rules": {
                 "@angular-eslint/directive-selector": [
                     "error",
-                    { "type": "attribute", "prefix": "smplct-view", "style": "camelCase" }
+                    {
+                        "type": "attribute",
+                        "prefix": ["smplct-view", "ons"],
+                        "style": "camelCase"
+                    }
                 ],
                 "@angular-eslint/component-selector": [
                     "error",
-                    { "type": "element", "prefix": "smplct-view", "style": "kebab-case" }
+                    {
+                        "type": "element",
+                        "prefix": ["smplct-view", "ons"],
+                        "style": "kebab-case"
+                    }
                 ]
             }
         },
