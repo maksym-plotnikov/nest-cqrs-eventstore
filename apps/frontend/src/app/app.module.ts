@@ -9,9 +9,15 @@ import { environment } from '../environments/environment';
 import { DashboardTabComponent } from './menu/dashboard-tab/dashboard-tab.component';
 import { PartnerTabComponent } from './menu/partner-tab/partner-tab.component';
 import { TouchpointsTabComponent } from './menu/touchpoints-tab/touchpoints-tab.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-    declarations: [AppComponent, DashboardTabComponent, PartnerTabComponent, TouchpointsTabComponent],
+    declarations: [
+        AppComponent,
+        DashboardTabComponent,
+        PartnerTabComponent,
+        TouchpointsTabComponent,
+    ],
     imports: [
         BrowserModule,
         OnsenModule,
@@ -19,10 +25,15 @@ import { TouchpointsTabComponent } from './menu/touchpoints-tab/touchpoints-tab.
             enabled: environment.production,
         }),
         HttpClientModule,
+        ComponentsModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
-    entryComponents: [ DashboardTabComponent, PartnerTabComponent, TouchpointsTabComponent],
+    entryComponents: [
+        DashboardTabComponent,
+        PartnerTabComponent,
+        TouchpointsTabComponent,
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
