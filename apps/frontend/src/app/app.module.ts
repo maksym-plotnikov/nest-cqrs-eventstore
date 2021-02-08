@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -10,6 +11,11 @@ import { DashboardTabComponent } from './menu/dashboard-tab/dashboard-tab.compon
 import { PartnerTabComponent } from './menu/partner-tab/partner-tab.component';
 import { TouchpointsTabComponent } from './menu/touchpoints-tab/touchpoints-tab.component';
 import { ComponentsModule } from './components/components.module';
+import { Pages } from './pages';
+import { InitialPageComponent } from './pages/initial-page/initial-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     declarations: [
@@ -17,6 +23,9 @@ import { ComponentsModule } from './components/components.module';
         DashboardTabComponent,
         PartnerTabComponent,
         TouchpointsTabComponent,
+        ...Pages,
+        InitialPageComponent,
+        LoginPageComponent,
     ],
     imports: [
         BrowserModule,
@@ -26,13 +35,16 @@ import { ComponentsModule } from './components/components.module';
         }),
         HttpClientModule,
         ComponentsModule,
+        RouterModule.forRoot([]),
+        ReactiveFormsModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [],
+    providers: [AuthService],
     entryComponents: [
         DashboardTabComponent,
         PartnerTabComponent,
         TouchpointsTabComponent,
+        ...Pages,
     ],
     bootstrap: [AppComponent],
 })

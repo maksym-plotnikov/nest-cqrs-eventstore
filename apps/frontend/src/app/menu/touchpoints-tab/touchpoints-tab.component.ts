@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ons-page',
-  templateUrl: './touchpoints-tab.component.html',
-  styleUrls: ['./touchpoints-tab.component.scss']
+    selector: 'ons-page[touch-point]',
+    templateUrl: './touchpoints-tab.component.html',
+    styleUrls: ['./touchpoints-tab.component.scss'],
 })
-export class TouchpointsTabComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class TouchpointsTabComponent {}

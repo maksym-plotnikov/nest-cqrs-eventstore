@@ -1,0 +1,27 @@
+<ons-page>
+    <div [formGroup]="loginForm" style="text-align: center; margin-top: 200px">
+        <p>
+            <ons-input
+                id="username"
+                placeholder="Username"
+                modifier="underbar"
+                formControlName="user"
+            ></ons-input>
+        </p>
+
+        <p>
+            <ons-input
+                id="password"
+                placeholder="Password"
+                type="password"
+                modifier="underbar"
+                formControlName="password"
+            >
+            </ons-input>
+        </p>
+
+        <p>
+            <ons-button (click)="login()">Sign in</ons-button>
+        </p>
+    </div>
+</ons-page>
