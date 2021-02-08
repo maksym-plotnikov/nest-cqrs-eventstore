@@ -5,6 +5,7 @@ import { contextMiddleware } from './middlewares';
 import { ConfigService } from './shared/services';
 import { AuthModule } from './modules/auth/auth.module';
 import { CompaniesModule } from './modules/companies/companies.module';
+import { ReportsModule } from './modules/reports/reports.module';
 import { UsersModule } from './modules/users/users.module';
 import { WinstonModule } from 'nest-winston';
 import { SharedModule } from './shared.module';
@@ -14,6 +15,7 @@ import { SharedModule } from './shared.module';
         AuthModule,
         CompaniesModule,
         UsersModule,
+        ReportsModule,
         SharedModule,
         WinstonModule.forRootAsync({
             useFactory: (configService: ConfigService) => configService.logConfig(),

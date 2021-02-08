@@ -31,14 +31,13 @@ export class AuthService {
         const user = await this.usersService.findOne({
             email: userLoginDto.email,
         });
+        if (!user) {
+            throw new UserNotFoundException();
+        }
         const isPasswordValid = await UtilsService.validateHash(
             userLoginDto.password,
             user && user.password,
         );
-
-        if (!user) {
-            throw new UserNotFoundException();
-        }
         if (user.password === '') {
             throw new NoContentException(
                 `Password for user ${userLoginDto.email} is already reset`,
@@ -47,6 +46,7 @@ export class AuthService {
         if (!isPasswordValid) {
             throw new UserNotFoundException();
         }
+        delete user.password;
         return user;
     }
 

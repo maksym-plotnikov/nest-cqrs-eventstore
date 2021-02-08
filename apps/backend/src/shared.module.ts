@@ -1,8 +1,8 @@
 import { JwtModule } from '@nestjs/jwt';
 import { Module, Global, HttpModule } from '@nestjs/common';
-import { ConfigService } from './shared/services';
+import { ConfigService, EventStoreService } from './shared/services';
 
-const providers = [ConfigService];
+const providers = [ConfigService, EventStoreService];
 
 const _config = new ConfigService();
 

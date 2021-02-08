@@ -3,6 +3,7 @@ import { ClassSerializerInterceptor, Logger } from '@nestjs/common';
 import { NestExpressApplication, ExpressAdapter } from '@nestjs/platform-express';
 import * as morgan from 'morgan';
 import * as helmet from 'helmet';
+import * as clc from 'cli-color';
 import * as compression from 'compression';
 import * as bodyParser from 'body-parser';
 import * as RateLimit from 'express-rate-limit';
@@ -87,4 +88,4 @@ async function bootstrap() {
     });
 }
 
-bootstrap().then(() => console.info('\x1b[35m', '--- API IS READY ---', '\x1b[0m'));
+bootstrap().then(() => console.info(clc.black.bgWhite('  --- API IS READY ---  ')));
