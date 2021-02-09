@@ -26,4 +26,5 @@ done
 yarn
 yarn migration:run backend
 yarn seed:run backend
+yarn eventstore:projections backend
 yarn watch:dev
