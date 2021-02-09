@@ -1,0 +1,105 @@
+@import '../../../assets/styles/colors';
+
+.card-wrapper {
+    display: grid;
+    grid-template-columns: auto 80px 80px;
+    gap: 8px;
+    padding: 8px;
+    width: max-content;
+    ons-card {
+        margin: 0;
+        width: calc(100vw - 16px);
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .associate {
+                font-size: 8px;
+                color: $white;
+                background-color: $black;
+                border-radius: 3.2px;
+                padding: 3px 6px;
+                height: 16px;
+                display: flex;
+                align-items: center;
+            }
+            .stats {
+                display: flex;
+                align-items: center;
+                > *:not(:first-child) {
+                    margin-left: 16px;
+                }
+                .status {
+                    font-size: 8px;
+                    color: $white;
+                    background-color: $orange;
+                    border-radius: 8px;
+                    height: 16px;
+                    padding: 3px 6px;
+                    display: flex;
+                    align-items: center;
+                }
+                .date {
+                    font-size: 11px;
+                    color: $gray-6;
+                }
+                .action {
+                    font-size: 10px;
+                    color: $gray-6;
+                }
+            }
+        }
+        .content {
+            .client {
+                &-id {
+                    font-size: 14px;
+                    font-weight: 500;
+                    height: 16px;
+                    color: $gray-9;
+                }
+                &-name {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $gray-8;
+                    width: 100%;
+                    overflow: hidden;
+                }
+                &-address {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: $gray-6;
+                }
+            }
+        }
+    }
+}
+
+.button-gray {
+    padding: 16px;
+    background-color: $gray-1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ::ng-deep .ons-icon.fa {
+        margin-top: 16px;
+        color: $gray-8;
+    }
+    .button-text {
+        color: $gray-6;
+    }
+}
+
+// animation
+.card-wrapper {
+    transition: 0.5s ease;
+    transform: translateX(0);
+}
+.move.card-wrapper {
+    transition: 0.5s ease;
+    transform: translateX(-176px);
+}

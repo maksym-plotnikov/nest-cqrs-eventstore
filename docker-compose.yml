@@ -47,6 +47,17 @@ services:
     command: redis-server
     networks:
       - smplct_view_network
+  nginx-viewapp:
+    privileged: true
+    userns_mode: host
+    image: jwilder/nginx-proxy
+    container_name: nginx-viewapp
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - smplct_view_network
 volumes:
   eventstore-volume-data:
   eventstore-volume-logs:
