@@ -7,7 +7,7 @@ import { GetReportsQuery } from '../impl';
 export class GetReportsHandler implements IQueryHandler<GetReportsQuery> {
     constructor(private readonly repository: ReportsRepository) {}
 
-    async execute(query: GetReportsQuery) {
+    async execute() {
         console.info(clc.yellowBright('[GetReports] Query'));
         return this.repository.findAll();
     }

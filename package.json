@@ -33,6 +33,7 @@
         "migration:generate": "scripty",
         "migration:revert": "scripty",
         "migration:run": "scripty",
+        "eventstore:projections": "scripty",
         "seed:run": "scripty",
         "watch:dev": "nx run-many --target=serve --projects=frontend,backend --parallel",
         "watch:e2e": "nx run-many --target=serve --projects=backend --parallel",

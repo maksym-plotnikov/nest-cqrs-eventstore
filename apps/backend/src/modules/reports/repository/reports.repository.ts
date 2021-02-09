@@ -18,6 +18,7 @@ export class ReportsRepository {
         return await this._es.readStream('reports_stream', {
             direction: EventStoreServiceConstants.backwards,
             fromRevision: EventStoreServiceConstants.end,
+            maxCount: 1,
         });
     }
 }

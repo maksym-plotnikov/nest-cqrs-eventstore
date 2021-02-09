@@ -15,7 +15,6 @@ import {
     AppendToStreamOptions,
     ReadStreamOptions,
 } from '@eventstore/db-client/dist/streams';
-import { JSONType } from '@eventstore/db-client/dist/events/types';
 
 const _config = new ConfigService();
 
@@ -30,8 +29,10 @@ export class EventStoreService {
     private client: EventStoreDBClient;
 
     constructor() {
+        const isDev = _config.getNodeEnv() === 'development';
+        const tls = isDev ? '?Tls=false' : '';
         this.client = EventStoreDBClient.connectionString(
-            _config.get('EVENTSTORE_DB_URL'),
+            `esdb://${_config.get('EVENTSTORE_DB_URL')}${tls}`,
         );
     }
 
