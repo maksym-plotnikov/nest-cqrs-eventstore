@@ -11,14 +11,13 @@ export class ReportsRepository {
     ) {}
 
     async findOneById(id: number): Promise<Report> {
-        console.info({ id });
-        return userReport;
+        return userReport(id);
     }
 
     async findAll(): Promise<any> {
         return await this._es.readStream('reports_stream', {
-            direction: EventStoreServiceConstants.forwards,
-            fromRevision: EventStoreServiceConstants.start,
+            direction: EventStoreServiceConstants.backwards,
+            fromRevision: EventStoreServiceConstants.end,
         });
     }
 }

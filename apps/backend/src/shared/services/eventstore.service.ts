@@ -5,9 +5,11 @@ import {
     JSONEventData,
     ResolvedEvent,
     AppendResult,
-    FORWARDS,
     ErrorType,
+    BACKWARDS,
+    FORWARDS,
     START,
+    END,
 } from '@eventstore/db-client';
 import {
     AppendToStreamOptions,
@@ -19,7 +21,9 @@ const _config = new ConfigService();
 
 export namespace EventStoreServiceConstants {
     export const forwards = FORWARDS;
+    export const backwards = BACKWARDS;
     export const start = START;
+    export const end = END;
 }
 
 export class EventStoreService {
@@ -36,11 +40,8 @@ export class EventStoreService {
      * @returns {JSONEventData}
      * @param payload
      */
-    static event(payload: JSONType): JSONEventData {
-        return jsonEvent({
-            type: 'grpc-client',
-            data: payload,
-        });
+    static event(payload: JSONEventData): JSONEventData {
+        return jsonEvent(payload);
     }
 
     /**

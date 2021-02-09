@@ -1,3 +1,3 @@
 import { Report } from '../../models/report.model';
 
-export const userReport = new Report('1234');
+export const userReport = id => new Report(id);

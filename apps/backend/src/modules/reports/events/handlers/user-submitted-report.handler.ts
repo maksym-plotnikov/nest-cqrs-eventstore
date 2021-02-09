@@ -17,8 +17,11 @@ export class UserReportSubmitEventHandler
         // Do logic
         console.info(clc.green('[UserReportSubmit] Event'));
         await this._es.appendToStream('reports_stream', {
-            userId: event.userId,
-            clientId: event.clientId,
+            type: 'UserReportSubmit',
+            data: {
+                userId: event.userId,
+                clientId: event.clientId,
+            },
         });
     }
 }

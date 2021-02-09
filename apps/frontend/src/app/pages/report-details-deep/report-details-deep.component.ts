@@ -11,6 +11,7 @@ export class ReportDetailsDeepComponent implements OnInit {
     constructor(private navigator: OnsNavigator, private params: Params) {}
 
     ngOnInit() {
+        console.log(this.navigator);
         if (this.params?.data?.report) {
             const { report } = this.params?.data;
             this.report = report;
