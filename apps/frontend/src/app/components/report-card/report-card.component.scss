@@ -1,77 +1,97 @@
 @import '../../../assets/styles/colors';
 
+// animation
+.move.card-wrapper {
+    transform: translateX(-176px);
+    transition: 0.5s ease;
+}
+
 .card-wrapper {
     display: grid;
-    grid-template-columns: auto 80px 80px;
     gap: 8px;
+    grid-template-columns: auto 80px 80px;
     padding: 8px;
+    // animation
+    transform: translateX(0);
+    transition: 0.5s ease;
     width: max-content;
+
     ons-card {
         margin: 0;
         width: calc(100vw - 16px);
+
         .header {
-            display: flex;
             align-items: center;
+            display: flex;
             justify-content: space-between;
+
             .associate {
-                font-size: 8px;
-                color: $white;
+                align-items: center;
                 background-color: $black;
                 border-radius: 3.2px;
-                padding: 3px 6px;
+                color: $white;
+                display: flex;
+                font-size: 8px;
                 height: 16px;
-                display: flex;
-                align-items: center;
+                padding: 3px 6px;
             }
+
             .stats {
-                display: flex;
                 align-items: center;
+                display: flex;
+
                 > *:not(:first-child) {
                     margin-left: 16px;
                 }
+
                 .status {
-                    font-size: 8px;
-                    color: $white;
+                    align-items: center;
                     background-color: $orange;
                     border-radius: 8px;
+                    color: $white;
+                    display: flex;
+                    font-size: 8px;
                     height: 16px;
                     padding: 3px 6px;
-                    display: flex;
-                    align-items: center;
                 }
+
                 .date {
+                    color: $gray-6;
                     font-size: 11px;
-                    color: $gray-6;
                 }
+
                 .action {
-                    font-size: 10px;
                     color: $gray-6;
+                    font-size: 10px;
                 }
             }
         }
+
         .content {
             .client {
                 &-id {
+                    color: $gray-9;
                     font-size: 14px;
                     font-weight: 500;
                     height: 16px;
-                    color: $gray-9;
                 }
+
                 &-name {
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
+                    color: $gray-8;
                     font-size: 14px;
                     font-weight: 500;
-                    color: $gray-8;
-                    width: 100%;
                     overflow: hidden;
-                }
-                &-address {
-                    white-space: nowrap;
                     text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 100%;
+                }
+
+                &-address {
+                    color: $gray-6;
                     font-size: 12px;
                     font-weight: 500;
-                    color: $gray-6;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
         }
@@ -79,27 +99,19 @@
 }
 
 .button-gray {
-    padding: 16px;
+    align-items: center;
     background-color: $gray-1;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 16px;
+
     ::ng-deep .ons-icon.fa {
-        margin-top: 16px;
         color: $gray-8;
+        margin-top: 16px;
     }
+
     .button-text {
         color: $gray-6;
     }
-}
-
-// animation
-.card-wrapper {
-    transition: 0.5s ease;
-    transform: translateX(0);
-}
-.move.card-wrapper {
-    transition: 0.5s ease;
-    transform: translateX(-176px);
 }
