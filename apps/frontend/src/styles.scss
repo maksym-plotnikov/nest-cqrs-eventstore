@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/styles/common';
+
 // Handling Overscroll in a Web App
 // with Header and Footer on iOS
 html,
@@ -12,5 +13,24 @@ body {
         -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
         overflow-y: scroll;
         width: 100vw;
+    }
+}
+
+body {
+    // Same as toolbar to support
+    //meta apple-mobile-web-app-status-bar-style" content="black-translucent"
+    background: rgb(250, 250, 250);
+}
+
+// Add safe area to the bottom for IPhoneX+ for gesture bar
+@media (orientation: portrait) {
+    html[onsflag-iphonex-portrait-custom] .tabbar:not(.tabbar--top):not(.tabbar--top) {
+        padding-bottom: 34px;
+    }
+}
+
+@media (orientation: landscape) {
+    html[onsflag-iphonex-landscape-custom] .tabbar:not(.tabbar--top) {
+        padding-bottom: 21px;
     }
 }

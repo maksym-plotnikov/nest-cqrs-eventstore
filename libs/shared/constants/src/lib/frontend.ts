@@ -1,4 +1,4 @@
 export const IPHONE_ONS_ATTRIBUTES = [
-    'onsflag-iphonex-portrait',
-    'onsflag-iphonex-landscape',
+    'onsflag-iphonex-portrait-custom',
+    'onsflag-iphonex-landscape-custom',
 ];
