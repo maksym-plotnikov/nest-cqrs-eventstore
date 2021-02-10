@@ -15,7 +15,11 @@
         "importHelpers": true,
         "target": "es2015",
         "module": "es2020",
-        "lib": ["es2018", "dom"]
+        "lib": ["es2018", "dom"],
+        "paths": {
+            "@smplct-view/shared/interfaces": ["../../libs/shared/interfaces/src/index"],
+            "@smplct-view/shared/constants": ["../../libs/shared/constants/src/index"]
+        }
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,

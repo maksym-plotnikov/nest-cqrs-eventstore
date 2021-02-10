@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/styles/common';
+// Handling Overscroll in a Web App
+// with Header and Footer on iOS
+html,
+body {
+    overflow: hidden;
+    position: fixed;
+
+    > .app-wrapper {
+        height: 100vh;
+        -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+        overflow-y: scroll;
+        width: 100vw;
+    }
+}
