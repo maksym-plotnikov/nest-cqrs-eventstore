@@ -1,8 +1,18 @@
 {
     "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
     "rules": {
-        "selector-max-id": 2,
-        "indentation": [4, { "baseIndentLevel": 0 }],
+        "selector-max-id": 1,
+        "indentation": [
+            4,
+            {
+                "baseIndentLevel": 0
+            }
+        ],
+        "selector-type-no-unknown": [true, { "ignoreTypes": ["/^ons-/"] }],
+        "selector-pseudo-element-no-unknown": [
+            true,
+            { "ignorePseudoElements": ["/^ng-/"] }
+        ],
         "selector-class-pattern": null,
         "selector-max-compound-selectors": 5,
         "max-nesting-depth": 5,
