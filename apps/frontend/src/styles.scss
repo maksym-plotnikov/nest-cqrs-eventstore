@@ -16,12 +16,6 @@ body {
     }
 }
 
-body {
-    // Same as toolbar to support
-    //meta apple-mobile-web-app-status-bar-style" content="black-translucent"
-    background: rgb(250, 250, 250);
-}
-
 // Add safe area to the bottom for IPhoneX+ for gesture bar
 @media (orientation: portrait) {
     html[onsflag-iphonex-portrait-custom] .tabbar:not(.tabbar--top):not(.tabbar--top) {
