@@ -1,0 +1,25 @@
+@import '../../../assets/styles/colors';
+
+.add-photo {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid $black;
+    border-radius: 50%;
+    cursor: pointer;
+
+    ::ng-deep .add-photo-icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .hiddenInput {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+}

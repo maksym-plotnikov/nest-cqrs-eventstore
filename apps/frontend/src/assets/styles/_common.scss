@@ -1,0 +1,17 @@
+.content {
+    padding: 8px;
+
+    .image-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 33vw;
+        gap: 8px;
+
+        .image {
+            object-fit: contain;
+            object-position: center;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
