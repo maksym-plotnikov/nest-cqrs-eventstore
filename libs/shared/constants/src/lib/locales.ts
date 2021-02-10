@@ -24,7 +24,7 @@ export const locales = {
         PROVIDE_ITEM: (item = 'item id') => `Provide ${item}`,
         MIN_LENGTH: (num = 4) => `Field should have more than ${num} letters`,
         MAX_LENGTH: (num = 4) => `Field should have less than ${num} letters`,
-        SAME_ITEM_WITH_FIELD_EXISTS: (item, fields) => {
+        SAME_ITEM_WITH_FIELD_EXISTS: (item: string, fields: string[]) => {
             if (fields.length > 0) {
                 const fieldsConcat = fields.join(', ');
                 return `${item} with same ${fieldsConcat} already exists`;
