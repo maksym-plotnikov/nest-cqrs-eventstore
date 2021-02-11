@@ -75,7 +75,7 @@ export class ConfigService {
         return this.get('NODE_ENV') || 'development';
     }
 
-    get typeOrmConfig(): TypeOrmModuleOptions {
+    get typeOrmConfig(): Promise<TypeOrmModuleOptions> | TypeOrmModuleOptions {
         const entities = [__dirname + '/apps/backend/src/**/*.entity{.ts,.js}'];
         const migrations = [
             __dirname + '/apps/backend/src/database/migrations/*{.ts,.js}',

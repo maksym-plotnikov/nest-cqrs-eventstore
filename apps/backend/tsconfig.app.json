@@ -7,9 +7,9 @@
         "emitDecoratorMetadata": true,
         "module": "commonjs",
         "allowJs": false,
-        "target": "es2020",
+        "target": "es2018",
         "sourceMap": true,
-        "lib": ["ESNext"]
+        "lib": ["ESNext.BigInt", "ES2020"]
     },
     "exclude": ["**/*.spec.ts"],
     "include": ["**/*.ts"]
