@@ -32,6 +32,6 @@ import { SharedModule } from './shared.module';
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer): MiddlewareConsumer | void {
-        consumer.apply(contextMiddleware).forRoutes('*');
+        return consumer.apply(contextMiddleware).forRoutes('*');
     }
 }
