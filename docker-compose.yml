@@ -4,7 +4,7 @@ networks:
   smplct_view_network:
 
 services:
-  eventstore.db:
+  eventstore.db-viewapp:
     image: eventstore/eventstore:latest
     environment:
       - EVENTSTORE_CLUSTER_SIZE=1
@@ -20,13 +20,9 @@ services:
       - "1113:1113"
       - "2113:2113"
     volumes:
-      - type: volume
-        source: eventstore-volume-data
-        target: /var/lib/eventstore
-      - type: volume
-        source: eventstore-volume-logs
-        target: /var/log/eventstore
-  postgres:
+      - eventstore-volume-data:/var/lib/eventstore
+      - eventstore-volume-logs:/var/log/eventstore
+  postgres-viewapp:
     # TypeORM fails with Postgres v.12
     image: postgres:11.10
     container_name: smplct_view_psql
@@ -40,7 +36,7 @@ services:
       - ./.db-data:/var/lib/postgresql/data
     networks:
       - smplct_view_network
-  redis:
+  redis-viewapp:
     image: redis:alpine
     container_name: smplct_view_redis
     ports:

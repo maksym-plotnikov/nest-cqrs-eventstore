@@ -79,9 +79,9 @@
                             "apps/frontend/src/manifest.webmanifest"
                         ],
                         "styles": [
-                          "node_modules/onsenui/css/onsenui.css",
-                          "node_modules/onsenui/css/onsen-css-components.css",
-                          "apps/frontend/src/styles.scss"
+                            "node_modules/onsenui/css/onsenui.css",
+                            "node_modules/onsenui/css/onsen-css-components.css",
+                            "apps/frontend/src/styles.scss"
                         ],
                         "scripts": []
                     },
