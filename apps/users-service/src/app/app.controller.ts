@@ -7,7 +7,8 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @MessagePattern({ cmd: 'ping' })
-    ping() {
+    ping(req: any) {
+        console.info(req);
         return this.appService.respond();
     }
 }

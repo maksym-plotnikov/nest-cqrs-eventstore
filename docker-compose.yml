@@ -23,8 +23,7 @@ services:
       - eventstore-volume-data:/var/lib/eventstore
       - eventstore-volume-logs:/var/log/eventstore
   postgres-viewapp:
-    # TypeORM fails with Postgres v.12
-    image: postgres:11.10
+    image: postgres:13.1
     container_name: smplct_view_psql
     ports:
       - 5454:5432
