@@ -17,7 +17,10 @@
         "baseUrl": ".",
         "paths": {
             "@smplct-view/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
-            "@smplct-view/shared/constants": ["libs/shared/constants/src/index.ts"]
+            "@smplct-view/shared/constants": ["libs/shared/constants/src/index.ts"],
+            "@smplct-view/shared/services": ["libs/shared/services/src/index.ts"],
+            "@smplct-view/shared/utils": ["libs/shared/utils/src/index.ts"],
+            "@smplct-view/shared/api": ["libs/shared/api/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

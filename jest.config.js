@@ -7,5 +7,8 @@ module.exports = {
         '<rootDir>/apps/api-gateway',
         '<rootDir>/apps/users-service',
         '<rootDir>/apps/partners-service',
+        '<rootDir>/libs/shared/services',
+        '<rootDir>/libs/shared/utils',
+        '<rootDir>/libs/shared/api',
     ],
 };

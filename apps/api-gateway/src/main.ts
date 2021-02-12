@@ -14,7 +14,8 @@ async function bootstrap() {
     const port = process.env.PORT || 3333;
     await app.listen(port, () => {
         Logger.log(
-            'API GATEWAY is listening at http://localhost:' + port + '/' + globalPrefix,
+            'listening at http://localhost:' + port + '/' + globalPrefix,
+            'API GATEWAY',
         );
     });
 }

@@ -35,8 +35,7 @@
         "migration:run": "scripty",
         "eventstore:projections": "scripty",
         "seed:run": "scripty",
-        "watch:dev": "nx run-many --target=serve --projects=frontend,backend --parallel",
-        "ms:watch:dev": "nx run-many --target=serve --projects=api-gateway,users-service,partners-service --parallel",
+        "watch:dev": "nx run-many --target=serve --projects=api-gateway,users-service,partners-service,frontend --parallel --maxParallel=6",
         "watch:e2e": "nx run-many --target=serve --projects=backend --parallel",
         "build:all": "nx run-many --target=build --projects=frontend,backend --skip-nx-cache"
     },
@@ -54,6 +53,7 @@
         "@angular/service-worker": "^11.1.1",
         "@eventstore/db-client": "^0.0.0-alpha.16",
         "@nestjs/common": "^7.0.0",
+        "@nestjs/config": "^0.6.3",
         "@nestjs/core": "^7.0.0",
         "@nestjs/cqrs": "^7.0.1",
         "@nestjs/jwt": "^7.2.0",

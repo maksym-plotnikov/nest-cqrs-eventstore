@@ -1,7 +1,7 @@
 . ~/.nvm/nvm.sh
 nvm use
 echo "Stopping all containers..."
-docker-compose down
+docker-compose down --remove-orphans
 echo "Spin-up DEVELOPMENT environment"
 docker-compose up -d
 

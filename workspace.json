@@ -286,8 +286,7 @@
                     "options": {
                         "outputPath": "dist/apps/users-service",
                         "main": "apps/users-service/src/main.ts",
-                        "tsConfig": "apps/users-service/tsconfig.app.json",
-                        "assets": ["apps/users-service/src/assets"]
+                        "tsConfig": "apps/users-service/tsconfig.app.json"
                     },
                     "configurations": {
                         "production": {
@@ -337,8 +336,7 @@
                     "options": {
                         "outputPath": "dist/apps/partners-service",
                         "main": "apps/partners-service/src/main.ts",
-                        "tsConfig": "apps/partners-service/tsconfig.app.json",
-                        "assets": ["apps/partners-service/src/assets"]
+                        "tsConfig": "apps/partners-service/tsconfig.app.json"
                     },
                     "configurations": {
                         "production": {
@@ -371,6 +369,69 @@
                     "outputs": ["coverage/apps/partners-service"],
                     "options": {
                         "jestConfig": "apps/partners-service/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "shared-services": {
+            "root": "libs/shared/services",
+            "sourceRoot": "libs/shared/services/src",
+            "projectType": "library",
+            "targets": {
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/shared/services/**/*.ts"]
+                    }
+                },
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/services"],
+                    "options": {
+                        "jestConfig": "libs/shared/services/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "shared-utils": {
+            "root": "libs/shared/utils",
+            "sourceRoot": "libs/shared/utils/src",
+            "projectType": "library",
+            "targets": {
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/shared/utils/**/*.ts"]
+                    }
+                },
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/utils"],
+                    "options": {
+                        "jestConfig": "libs/shared/utils/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "shared-api": {
+            "root": "libs/shared/api",
+            "sourceRoot": "libs/shared/api/src",
+            "projectType": "library",
+            "targets": {
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/shared/api/**/*.ts"]
+                    }
+                },
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/api"],
+                    "options": {
+                        "jestConfig": "libs/shared/api/jest.config.js",
                         "passWithNoTests": true
                     }
                 }

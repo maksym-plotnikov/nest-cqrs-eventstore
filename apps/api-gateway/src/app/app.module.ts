@@ -1,28 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ClientsModule } from '@nestjs/microservices';
+import { UsersModule } from './modules/users/users.module';
 import { AppService } from './app.service';
+import { WinstonModule } from 'nest-winston';
+import { SharedModule } from './shared.module';
+import { ConfigService } from '@smplct-view/shared/services';
+import { getEnvPath } from '@smplct-view/shared/utils';
+
+const _config = new ConfigService(getEnvPath('api-gateway', process.env.NODE_ENV));
 
 @Module({
     imports: [
-        ClientsModule.register([
-            {
-                name: 'USERS_SERVICE',
-                transport: Transport.TCP,
-                options: {
-                    host: '127.0.0.1',
-                    port: 8888,
-                },
-            },
-            {
-                name: 'PARTNERS_SERVICE',
-                transport: Transport.TCP,
-                options: {
-                    host: '127.0.0.1',
-                    port: 8889,
-                },
-            },
-        ]),
+        ClientsModule.register(_config.microServicesConfig),
+        UsersModule,
+        SharedModule,
+        WinstonModule.forRoot(_config.logConfig),
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -23,6 +23,9 @@
         "shared-constants": { "tags": [] },
         "api-gateway": { "tags": [] },
         "users-service": { "tags": [] },
-        "partners-service": { "tags": [] }
+        "partners-service": { "tags": [] },
+        "shared-services": { "tags": [] },
+        "shared-utils": { "tags": [] },
+        "shared-api": { "tags": [] }
     }
 }

@@ -1,6 +1,6 @@
 import { JwtModule } from '@nestjs/jwt';
 import { Module, Global, HttpModule } from '@nestjs/common';
-import { ConfigService, EventStoreService } from './shared/services';
+import { ConfigService, EventStoreService } from '@smplct-view/shared/services';
 
 const providers = [ConfigService, EventStoreService];
 
