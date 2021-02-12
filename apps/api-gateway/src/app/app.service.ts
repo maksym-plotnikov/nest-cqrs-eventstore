@@ -5,15 +5,15 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AppService {
     constructor(
-        @Inject('SERVICE_A') private readonly clientServiceA: ClientProxy,
-        @Inject('SERVICE_B') private readonly clientServiceB: ClientProxy,
+        @Inject('USERS_SERVICE') private readonly usersServiceA: ClientProxy,
+        @Inject('PARTNERS_SERVICE') private readonly partnersService: ClientProxy,
     ) {}
 
     pingUsersService() {
         const startTs = Date.now();
         const pattern = { cmd: 'ping' };
         const payload = {};
-        return this.clientServiceA
+        return this.usersServiceA
             .send<string>(pattern, payload)
             .pipe(
                 map((message: string) => ({ message, duration: Date.now() - startTs })),
@@ -24,7 +24,7 @@ export class AppService {
         const startTs = Date.now();
         const pattern = { cmd: 'ping' };
         const payload = {};
-        return this.clientServiceB
+        return this.partnersService
             .send<string>(pattern, payload)
             .pipe(
                 map((message: string) => ({ message, duration: Date.now() - startTs })),

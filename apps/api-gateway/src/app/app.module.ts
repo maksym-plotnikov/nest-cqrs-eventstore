@@ -7,7 +7,7 @@ import { AppService } from './app.service';
     imports: [
         ClientsModule.register([
             {
-                name: 'SERVICE_A',
+                name: 'USERS_SERVICE',
                 transport: Transport.TCP,
                 options: {
                     host: '127.0.0.1',
@@ -15,7 +15,7 @@ import { AppService } from './app.service';
                 },
             },
             {
-                name: 'SERVICE_B',
+                name: 'PARTNERS_SERVICE',
                 transport: Transport.TCP,
                 options: {
                     host: '127.0.0.1',
