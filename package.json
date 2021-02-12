@@ -155,7 +155,7 @@
         }
     },
     "lint-staged": {
-        "*.{ts,js}": "yarn lint:all --max-warnings=-1 --parallel",
+        "*.{ts,js}": "yarn affected:lint --max-warnings=0",
         "*.{css,scss}": "npx stylelint \"apps/frontend/**/*.scss\" --cache --aei --max-warnings=0 --fix",
         "*.{ts,js,md,json}": "prettier --write"
     }
