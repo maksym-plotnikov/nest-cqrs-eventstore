@@ -20,6 +20,9 @@
         "frontend": { "tags": [] },
         "frontend-e2e": { "tags": [], "implicitDependencies": ["frontend"] },
         "shared-interfaces": { "tags": [] },
-        "shared-constants": { "tags": [] }
+        "shared-constants": { "tags": [] },
+        "api-gateway": { "tags": [] },
+        "users-service": { "tags": [] },
+        "partners-service": { "tags": [] }
     }
 }

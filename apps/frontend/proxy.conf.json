@@ -1,9 +1,11 @@
 {
     "/api": {
         "target": "http://localhost:3333/v1",
-        "secure": true,
+        "secure": false,
         "changeOrigin": true,
         "logLevel": "debug",
-        "pathRewrite": { "^/api": "" }
+        "pathRewrite": {
+            "^/api": ""
+        }
     }
 }
