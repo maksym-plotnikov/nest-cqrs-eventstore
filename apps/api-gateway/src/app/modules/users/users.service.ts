@@ -10,16 +10,32 @@ export class UsersService {
         @Inject('USERS_SERVICE') private readonly usersServiceProxy: ClientProxy,
     ) {}
 
-    async createUser(createUserDto: CreateAndEditUserDto) {
+    sendProxyRequest(pattern, data) {
         const startTs = Date.now();
-        // TODO Add constant
-        const pattern = { cmd: 'CreateUser' };
         return this.usersServiceProxy
-            .send<string>(pattern, createUserDto)
+            .send<string>(pattern, data)
             .pipe(
                 map((message: string) => ({ message, duration: Date.now() - startTs })),
                 timeout(5000),
             )
             .toPromise();
+    }
+
+    async createUser(createUserDto: CreateAndEditUserDto) {
+        // TODO Add constant
+        return this.sendProxyRequest({ cmd: 'CreateUser' }, createUserDto);
+    }
+
+    async updateUser(aggregateId: string, updateUserDto: CreateAndEditUserDto) {
+        // TODO Add constant
+        return this.sendProxyRequest(
+            { cmd: 'UpdateUser' },
+            { aggregateId, dto: updateUserDto },
+        );
+    }
+
+    async deleteUser(aggregateId: string) {
+        // TODO Add constant
+        return this.sendProxyRequest({ cmd: 'DeleteUser' }, { aggregateId });
     }
 }

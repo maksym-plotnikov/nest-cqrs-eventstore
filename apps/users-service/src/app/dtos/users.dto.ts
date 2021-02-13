@@ -15,3 +15,13 @@ export class UserDto {
     @IsString()
     readonly email!: string;
 }
+
+export class UserDeleteDto {
+    @IsString()
+    readonly aggregateId!: string;
+}
+
+export class UserUpdateDto extends UserDeleteDto {
+    dto!: UserDto;
+    static dto: UserDto;
+}

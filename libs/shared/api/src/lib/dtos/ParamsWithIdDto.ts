@@ -7,5 +7,5 @@ export class ParamsWithIdDto {
     @IsString({ message: locales.messages.IS_STRING })
     @IsNotEmpty({ message: locales.messages.IS_NOT_EMPTY })
     @ApiProperty()
-    readonly id: number;
+    readonly id: string;
 }

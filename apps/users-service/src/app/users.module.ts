@@ -1,16 +1,16 @@
 import { OnModuleInit, Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import { WinstonModule } from 'nest-winston';
+import { UsersController } from './controllers/users.controller';
+import { UsersService } from './services/users.service';
+import { UserRepository } from './repository/user.repository';
+import { ConfigService, EventStoreService } from '@smplct-view/shared/services';
 import { CommandHandlers } from './commands/handlers';
 import { EventHandlers } from './events/handlers';
 import { QueryHandlers } from './queries/handlers';
 import { UsersSagas } from './sagas/users.sagas';
-import { UsersController } from './controllers/users.controller';
-import { UsersService } from './services/users.service';
-import { UserRepository } from './repository/user.repository';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
-import { WinstonModule } from 'nest-winston';
-import { ConfigService, EventStoreService } from '@smplct-view/shared/services';
 import { getEnvPath } from '@smplct-view/shared/utils';
 
 const config = new ConfigService(getEnvPath('users-service', process.env.NODE_ENV));
@@ -27,14 +27,14 @@ const config = new ConfigService(getEnvPath('users-service', process.env.NODE_EN
     ],
     controllers: [UsersController],
     providers: [
+        ConfigService,
+        EventStoreService,
+        UserRepository,
         UsersService,
-        UsersSagas,
         ...CommandHandlers,
         ...EventHandlers,
         ...QueryHandlers,
-        UserRepository,
-        ConfigService,
-        EventStoreService,
+        UsersSagas,
     ],
 })
 export class UsersModule implements OnModuleInit {

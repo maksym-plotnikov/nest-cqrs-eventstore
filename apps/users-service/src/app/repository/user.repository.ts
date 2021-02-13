@@ -11,27 +11,27 @@ import { FindUserQuery } from '../queries/impl';
 export class UserRepository {
     constructor(private readonly _es: EventStoreService) {}
 
-    async createUser(userDto) {
+    createUser(userDto) {
         const user = new User(userDto.id);
         user.setData(userDto);
         user.createUser();
         return user;
     }
 
-    async updateUser(userDto) {
+    updateUser(userDto) {
         const user = new User(userDto.id);
         user.setData(userDto);
         user.updateUser();
         return user;
     }
 
-    async deleteUser(userDto) {
+    deleteUser(userDto) {
         const user = new User(userDto.id);
         user.deleteUser();
         return user;
     }
 
-    async welcomeUser(userDto) {
+    welcomeUser(userDto) {
         const user = new User(userDto.id);
         user.welcomeUser();
         return user;
