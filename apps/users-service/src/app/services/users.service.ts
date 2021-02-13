@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { Observable, of } from 'rxjs';
 import { UserIdRequestParamsDto } from '../dtos/users.dto';
 import { UserDto } from '../dtos/users.dto';
 import { CreateUserCommand } from '../commands/impl/create-user.command';
 import { UpdateUserCommand } from '../commands/impl/update-user.command';
 import { DeleteUserCommand } from '../commands/impl/delete-user.command';
-import { FindUserCommand } from '../commands/impl/find-user.command';
-import { FindUsersCommand } from '../commands/impl/find-users.command';
-import { Observable, of } from 'rxjs';
+import { FindUserQuery, FindUsersQuery } from '../queries/impl';
 
 @Injectable()
 export class UsersService {
@@ -33,9 +32,10 @@ export class UsersService {
     }
 
     async findUser(user: UserIdRequestParamsDto) {
-        return await this.queryBus.execute(new FindUserCommand(user));
+        return await this.queryBus.execute(new FindUserQuery(user.id));
     }
-    async findUsers(users: UserDto[]) {
-        return await this.queryBus.execute(new FindUsersCommand(users));
+
+    async findUsers(): Promise<Record<string, UserDto>> {
+        return await this.queryBus.execute(new FindUsersQuery());
     }
 }

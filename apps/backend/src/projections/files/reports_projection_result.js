@@ -1,16 +1,17 @@
 options({
+    resultStreamName: 'reports_projection_result',
     $includeLinks: false,
     reorderEvents: false,
     processingLag: 0,
 });
 
-fromStreams(['reports_stream', 'user_streams'])
+fromStreams(['users_stream'])
     .when({
         $init: function () {
             return {};
         },
-        UserReportSubmit: function (state, event) {
-            state[event.data.userId] = event.data;
+        UserCreatedEvent: function (state, event) {
+            state[event.data.id] = event.data;
         },
     })
     .outputState();

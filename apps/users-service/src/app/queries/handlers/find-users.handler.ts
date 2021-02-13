@@ -8,7 +8,7 @@ export class FindUsersHandler implements IQueryHandler<FindUsersQuery> {
     constructor(private readonly repository: UserRepository) {}
 
     async execute() {
-        console.info(clc.yellowBright('[GetReports] Query'));
-        return this.repository.findMany();
+        console.info(clc.yellowBright('[FindUsersQuery] Query'));
+        return await this.repository.findMany();
     }
 }

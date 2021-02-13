@@ -12,6 +12,7 @@ export class UsersService {
 
     async createUser(createUserDto: CreateAndEditUserDto) {
         const startTs = Date.now();
+        // TODO Add constant
         const pattern = { cmd: 'CreateUser' };
         return this.usersServiceProxy
             .send<string>(pattern, createUserDto)

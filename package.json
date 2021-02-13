@@ -71,6 +71,7 @@
         "@types/lodash": "^4.14.167",
         "@types/morgan": "^1.9.2",
         "@types/passport-jwt": "^3.0.3",
+        "@types/uuid": "^8.3.0",
         "aws-sdk": "^2.834.0",
         "bcrypt": "^5.0.0",
         "body-parser": "^1.19.0",

@@ -1,8 +1,10 @@
 import { Controller, Param, Body } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { MessagePattern, RpcException } from '@nestjs/microservices';
+import { v4 as uuidv4 } from 'uuid';
 import { UserIdRequestParamsDto } from '../dtos/users.dto';
 import { UserDto } from '../dtos/users.dto';
 import { UsersService } from '../services/users.service';
+import { of } from 'rxjs';
 
 @Controller('users')
 export class UsersController {
@@ -18,8 +20,11 @@ export class UsersController {
     /* Create User */
     /*--------------------------------------------*/
     @MessagePattern({ cmd: 'CreateUser' })
-    async createUser(userDto: UserDto): Promise<UserDto> {
-        return this.usersService.createUser(userDto);
+    async createUser(userDto: UserDto) {
+        const state = await this.usersService.findUsers();
+        const user = Object.values(state).find(u => u?.email === userDto.email);
+        if (user) return of(new RpcException('Email is already taken.'));
+        return this.usersService.createUser({ ...userDto, id: uuidv4() });
     }
 
     /* Update User */
@@ -39,8 +44,8 @@ export class UsersController {
     /* TODO: List Users */
     /*--------------------------------------------*/
     @MessagePattern({ cmd: 'FindUsers' })
-    async findUsers(users: UserDto[]) {
-        return this.usersService.findUsers(users);
+    async findUsers() {
+        return this.usersService.findUsers();
     }
 
     /* TODO: Find User */

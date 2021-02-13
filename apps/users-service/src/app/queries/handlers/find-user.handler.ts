@@ -7,8 +7,8 @@ import { FindUserQuery } from '../impl';
 export class FindUserHandler implements IQueryHandler<FindUserQuery> {
     constructor(private readonly repository: UserRepository) {}
 
-    async execute() {
-        console.info(clc.yellowBright('[GetReports] Query'));
-        return this.repository.findOne();
+    async execute(query: FindUserQuery) {
+        console.info(clc.yellowBright('[FindUserQuery] Query'));
+        return this.repository.findOne(query);
     }
 }

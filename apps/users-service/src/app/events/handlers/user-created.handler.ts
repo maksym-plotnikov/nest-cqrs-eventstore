@@ -17,7 +17,7 @@ export class UserCreatedHandler implements IEventHandler<UserCreatedEvent> {
         // TODO Add constants
         const resolvedEvent = await this._es.appendToStream('users_stream', {
             type: 'UserCreatedEvent',
-            data: event,
+            data: event.userDto,
         });
         console.info(resolvedEvent);
     }
