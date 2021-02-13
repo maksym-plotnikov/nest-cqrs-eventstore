@@ -18,7 +18,7 @@ async function run() {
             const filepath = join(path, projection);
             const [name] = projection.split('.');
             const url = `http://${process.env.EVENTSTORE_DB_URL}/projections/continuous?name=${name}&type=js&enabled=true`;
-            await exec(`curl -i -d@${filepath} ${url}`);
+            await exec(`curl -i --data-binary '@${filepath}' ${url}`);
         }
     } catch (e) {
         console.error(e);

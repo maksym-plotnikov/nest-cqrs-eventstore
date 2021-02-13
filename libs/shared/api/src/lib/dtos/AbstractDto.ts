@@ -1,4 +1,3 @@
-import { AbstractEntity } from './abstract.entity';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsUUID } from 'class-validator';
 
@@ -13,9 +12,9 @@ export class AbstractDto {
     @ApiPropertyOptional({ type: String })
     updatedAt: Date;
 
-    constructor(entity: AbstractEntity) {
-        this.id = entity.id;
-        this.createdAt = entity.createdAt;
-        this.updatedAt = entity.updatedAt;
+    constructor(dto: AbstractDto) {
+        this.id = dto.id;
+        this.createdAt = dto.createdAt;
+        this.updatedAt = dto.updatedAt;
     }
 }

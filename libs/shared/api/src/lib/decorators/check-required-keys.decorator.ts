@@ -4,10 +4,11 @@ import { withModifiedToString, checkRequiredKeys } from '@smplct-view/shared/uti
  * Class method decorator
  * @param requiredKeysArray Array of string with required keys
  */
-export function CheckRequiredKeys<T>(requiredKeysArray: string[]) {
+export function CheckRequiredKeys<T extends Record<string, unknown>>(
+    requiredKeysArray: string[],
+) {
     return (target: any, key: any, descriptor: any) => {
         const originalMethod = descriptor.value;
-
         // wrapping the original method
         descriptor.value = function (...args: any[]) {
             if (checkRequiredKeys<T>(requiredKeysArray, args[0])) {
