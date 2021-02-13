@@ -1,10 +1,15 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
-        "types": ["node"],
+        "types": ["node", "jest"],
+        "noImplicitAny": false,
+        "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
-        "target": "es2015"
+        "module": "commonjs",
+        "allowJs": false,
+        "target": "es2018",
+        "sourceMap": true,
+        "lib": ["ESNext.BigInt", "ES2020"]
     },
     "exclude": ["**/*.spec.ts"],
     "include": ["**/*.ts"]
