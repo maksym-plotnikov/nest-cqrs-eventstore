@@ -5,6 +5,11 @@ export class UserIdRequestParamsDto {
     readonly id!: string;
 }
 
+export class UserAggregateIdRequestParamsDto {
+    @IsString()
+    readonly aggregateId!: string;
+}
+
 export class UserDto {
     @IsString()
     readonly id!: string;

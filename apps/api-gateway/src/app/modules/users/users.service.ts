@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common';
-// import { User } from './user.entity';
 import { ClientProxy } from '@nestjs/microservices';
 import { map, timeout } from 'rxjs/operators';
 import { CreateAndEditUserDto } from './dto';
@@ -10,12 +9,15 @@ export class UsersService {
         @Inject('USERS_SERVICE') private readonly usersServiceProxy: ClientProxy,
     ) {}
 
-    sendProxyRequest(pattern, data) {
+    sendProxyRequest(pattern, data = {}) {
         const startTs = Date.now();
         return this.usersServiceProxy
             .send<string>(pattern, data)
             .pipe(
-                map((message: string) => ({ message, duration: Date.now() - startTs })),
+                map((response: any) => ({
+                    response,
+                    responseTime: Date.now() - startTs,
+                })),
                 timeout(5000),
             )
             .toPromise();
@@ -37,5 +39,18 @@ export class UsersService {
     async deleteUser(aggregateId: string) {
         // TODO Add constant
         return this.sendProxyRequest({ cmd: 'DeleteUser' }, { aggregateId });
+    }
+
+    async findUserById(aggregateId: string) {
+        return this.sendProxyRequest({ cmd: 'FindUserById' }, { id: aggregateId });
+    }
+
+    async getAllUsers() {
+        try {
+            // TODO Add constant
+            return this.sendProxyRequest({ cmd: 'GetAllUsers' });
+        } catch (e) {
+            return e;
+        }
     }
 }

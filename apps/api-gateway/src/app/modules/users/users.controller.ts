@@ -7,6 +7,7 @@ import {
     Put,
     Delete,
     Param,
+    Get,
 } from '@nestjs/common';
 import {
     ApiTags,
@@ -16,9 +17,8 @@ import {
     ApiConflictResponse,
 } from '@nestjs/swagger';
 import { UsersService } from './users.service';
-import { User } from './user.entity';
 // import { AuthUserInterceptor } from '../../interceptors';
-import { IResponseError } from '@smplct-view/shared/interfaces';
+import { IResponseError, IServiceResponse } from '@smplct-view/shared/interfaces';
 import { ParamsWithIdDto, PlainResponseDto } from '@smplct-view/shared/api';
 import { UserDto, CreateAndEditUserDto, CreateUserResponseErrorDto } from './dto';
 
@@ -29,6 +29,48 @@ import { UserDto, CreateAndEditUserDto, CreateUserResponseErrorDto } from './dto
 @ApiTags('users')
 export class UsersController {
     constructor(public service: UsersService) {}
+
+    /**
+     * Find existing user by id
+     */
+    @Get(':id')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: 'Find existing user by id',
+    })
+    @ApiOkResponse({
+        type: UserDto,
+        description: 'User',
+    })
+    @ApiConflictResponse({
+        type: CreateUserResponseErrorDto,
+        description: 'One of the unique fields has conflict',
+    })
+    async findUserById(
+        @Param() params: ParamsWithIdDto,
+    ): Promise<IServiceResponse | IResponseError> {
+        return await this.service.findUserById(params.id);
+    }
+
+    /**
+     * Get all Users
+     */
+    @Get()
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({
+        summary: 'Get all Users',
+    })
+    @ApiOkResponse({
+        type: UserDto,
+        description: 'Users',
+    })
+    @ApiConflictResponse({
+        type: CreateUserResponseErrorDto,
+        description: 'One of the unique fields has conflict',
+    })
+    async getAllUsers(): Promise<IServiceResponse | IResponseError> {
+        return await this.service.getAllUsers();
+    }
 
     /**
      * Create new user
@@ -45,7 +87,7 @@ export class UsersController {
     })
     async createUser(
         @Body() createUserDto: CreateAndEditUserDto,
-    ): Promise<User | IResponseError> {
+    ): Promise<IServiceResponse | IResponseError> {
         return await this.service.createUser(createUserDto);
     }
 
@@ -69,7 +111,7 @@ export class UsersController {
         @Param() params: ParamsWithIdDto,
         // @AuthUser() user: UserEntity,
         @Body() updateUserDto: CreateAndEditUserDto,
-    ): Promise<User | IResponseError> {
+    ): Promise<IServiceResponse | IResponseError> {
         // TODO Add logic
         return await this.service.updateUser(params.id, updateUserDto);
     }
@@ -90,7 +132,9 @@ export class UsersController {
         type: CreateUserResponseErrorDto,
         description: 'One of the unique fields has conflict',
     })
-    async deleteUser(@Param() params: ParamsWithIdDto): Promise<User | IResponseError> {
+    async deleteUser(
+        @Param() params: ParamsWithIdDto,
+    ): Promise<IServiceResponse | IResponseError> {
         return await this.service.deleteUser(params.id);
     }
 }
