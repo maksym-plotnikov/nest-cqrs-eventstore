@@ -1,6 +1,4 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { InitialPageComponent } from './pages/initial-page/initial-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { onsPlatform } from 'ngx-onsenui';
 import { Subject } from 'rxjs';
 import { AuthService } from './services/auth.service';
@@ -15,7 +13,6 @@ export class AppComponent implements OnInit, OnDestroy {
     iphoneAttrs: string[] = IPHONE_ONS_ATTRIBUTES;
     private resizeSubject = new Subject<number>();
     private resizeObservable = this.resizeSubject.asObservable();
-
     @HostListener('window:resize', ['$event.target.innerWidth'])
     onResize(width: number) {
         this.resizeSubject.next(width);
@@ -23,24 +20,13 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(private auth: AuthService) {
         this.resizeObservable.subscribe(() => this.handleIphoneX());
     }
-
     ngOnInit() {
         this.handleIphoneX();
         this.loggedIn = this.auth.isLoggedIn();
     }
-
     ngOnDestroy() {
         this.iphoneAttrs.map(i => document.documentElement.removeAttribute(i));
     }
-
-    get initialPage() {
-        if (this.loggedIn) {
-            return InitialPageComponent;
-        } else {
-            return LoginPageComponent;
-        }
-    }
-
     handleIphoneX() {
         if (onsPlatform.isIPhoneX()) {
             this.iphoneAttrs.map((i: string) =>

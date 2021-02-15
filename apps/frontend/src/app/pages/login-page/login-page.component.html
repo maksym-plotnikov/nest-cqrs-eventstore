@@ -20,6 +20,14 @@
             </ons-input>
         </p>
 
+        <div
+            class="error-message"
+            *ngIf="loginForm?.invalid && (loginForm?.touched || loginForm?.dirty)"
+        >
+            <span *ngIf="user?.errors?.required">User name is required<br /></span>
+            <span *ngIf="password?.errors?.required">Password is required</span>
+        </div>
+
         <p>
             <ons-button (click)="login()">Sign in</ons-button>
         </p>

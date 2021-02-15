@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OnsNavigator } from 'ngx-onsenui';
-import { InitialPageComponent } from '../initial-page/initial-page.component';
+import { onsPlatform } from 'ngx-onsenui';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'ons-page[login-page]',
@@ -12,22 +12,28 @@ import { AuthService } from '../../services/auth.service';
 export class LoginPageComponent implements OnInit {
     loggedIn!: boolean;
     loginForm!: FormGroup;
+    mobile!: boolean;
 
     constructor(
-        private navigator: OnsNavigator,
+        private router: Router,
         private fb: FormBuilder,
         private auth: AuthService,
     ) {}
 
     ngOnInit() {
         this.createForm();
+        this.mobile = this.isMobile();
     }
 
-    login() {
+    async login() {
         const { user, password } = this.loginForm.value;
         this.loggedIn = this.auth.logIn(user, password);
         if (this.loggedIn) {
-            this.navigator.nativeElement.replacePage(InitialPageComponent);
+            return this.mobile
+                ? await this.router.navigate(['mobile'])
+                : await this.router.navigate(['desktop']);
+        } else {
+            return await Promise.reject('Could not login');
         }
     }
 
@@ -36,5 +42,29 @@ export class LoginPageComponent implements OnInit {
             user: ['', [Validators.required]],
             password: ['', [Validators.required]],
         });
+    }
+
+    get user() {
+        return this.loginForm.get('user');
+    }
+
+    get password() {
+        return this.loginForm.get('password');
+    }
+
+    isMobile() {
+        return this.getMobileOS() != 'other';
+    }
+
+    getMobileOS() {
+        if (onsPlatform.isAndroid()) {
+            return 'android';
+        } else if (onsPlatform.isIOS()) {
+            return 'ios';
+        } else if (onsPlatform.isWP()) {
+            return 'wp';
+        } else {
+            return 'other';
+        }
     }
 }
