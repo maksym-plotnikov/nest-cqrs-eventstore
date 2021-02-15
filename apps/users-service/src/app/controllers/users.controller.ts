@@ -4,12 +4,17 @@ import { v4 as uuidv4 } from 'uuid';
 import { UserIdRequestParamsDto, UserUpdateDto, UserDeleteDto } from '../dtos/users.dto';
 import { UserDto } from '../dtos/users.dto';
 import { UsersService } from '../services/users.service';
-import { wait } from '@smplct-view/shared/utils';
+import { EventBus, ofType } from '@nestjs/cqrs';
+import { UserCreatedEvent } from '../events/impl/user-created.event';
+import { UserWelcomedEvent } from '../events/impl/user-welcomed.event';
 // import { of } from 'rxjs';
 
 @Controller('users')
 export class UsersController {
-    constructor(private readonly usersService: UsersService) {}
+    constructor(
+        private readonly usersService: UsersService,
+        private readonly events$: EventBus,
+    ) {}
 
     /* Ping microservice */
     /*--------------------------------------------*/
@@ -25,10 +30,18 @@ export class UsersController {
         const state = await this.usersService.findUsers();
         const user = Object.values(state).find(u => u?.email === userDto.email);
         if (user) return new RpcException('Email is already taken.');
-        const id = uuidv4();
-        await this.usersService.createUser({ id, ...userDto });
-        await wait(1500);
-        return await this.usersService.findUser({ id });
+        // We listen till all events will be processed
+        let event = null;
+        const response = new Promise(resolve => {
+            this.events$
+                .pipe(ofType(UserCreatedEvent))
+                .subscribe(ev => (event = ev.userDto));
+            // Resolve only after last event
+            this.events$.pipe(ofType(UserWelcomedEvent)).subscribe(ev => resolve(ev));
+        });
+        await this.usersService.createUser({ id: uuidv4(), ...userDto });
+        await response;
+        return event;
     }
 
     /* Update User */
