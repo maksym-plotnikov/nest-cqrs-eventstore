@@ -1,13 +1,15 @@
 {
-  "cSpell.words": [
-    "ngsw",
-    "nrwl",
-    "onsen",
-    "onsenui",
-    "smplct",
-    "tabbar",
-    "touchpoints"
-  ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+    "cSpell.words": [
+        "Iphone",
+        "ngsw",
+        "nrwl",
+        "onsen",
+        "onsenui",
+        "smplct",
+        "swipeable",
+        "tabbar",
+        "touchpoints"
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }
