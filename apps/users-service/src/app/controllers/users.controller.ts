@@ -4,16 +4,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { UserIdRequestParamsDto, UserUpdateDto, UserDeleteDto } from '../dtos/users.dto';
 import { UserDto } from '../dtos/users.dto';
 import { UsersService } from '../services/users.service';
-import { EventBus, ofType } from '@nestjs/cqrs';
-import { UserCreatedEvent } from '../events/impl/user-created.event';
-import { filter, map } from 'rxjs/operators';
-import { UserUpdatedEvent } from '../events/impl/user-updated.event';
+import { SubscriptionEventService } from '../services/subscription-event.service';
 
 @Controller('users')
 export class UsersController {
     constructor(
         private readonly usersService: UsersService,
-        private readonly events$: EventBus,
+        private readonly subscriptionService: SubscriptionEventService,
     ) {}
 
     /* Ping microservice */
@@ -33,18 +30,11 @@ export class UsersController {
         }
         const user = Object.values(state).find(u => u?.email === userDto.email);
         if (user) return new RpcException('Email is already taken.');
-
-        // We listen till all events will be processed
-        const id = uuidv4();
-        this.usersService.createUser({ id, ...userDto });
-        return new Promise(resolve =>
-            this.events$
-                .pipe(
-                    ofType(UserCreatedEvent),
-                    filter(ev => ev.userDto.id === id),
-                )
-                .subscribe(resolve),
-        );
+        // Subscribe to event
+        return this.subscriptionService.fireEvent('create', {
+            id: uuidv4(),
+            ...userDto,
+        });
     }
 
     /* Update User */
@@ -53,19 +43,11 @@ export class UsersController {
     async updateUser(userUpdateDto: UserUpdateDto) {
         const user = await this.usersService.findUser({ id: userUpdateDto.aggregateId });
         if (user) {
-            this.usersService.updateUser({
+            // Subscribe to event
+            return this.subscriptionService.fireEvent('update', {
                 id: userUpdateDto.aggregateId,
                 ...userUpdateDto.dto,
             });
-            return new Promise(resolve =>
-                this.events$
-                    .pipe(
-                        ofType(UserUpdatedEvent),
-                        filter(ev => ev.userDto.id === userUpdateDto.aggregateId),
-                        map(ev => ev.userDto),
-                    )
-                    .subscribe(resolve),
-            );
         }
         return new RpcException('User not found');
     }
@@ -76,7 +58,10 @@ export class UsersController {
     async deleteUser(userDeleteDto: UserDeleteDto) {
         const user = await this.usersService.findUser({ id: userDeleteDto.aggregateId });
         if (user) {
-            return this.usersService.deleteUser({ id: userDeleteDto.aggregateId });
+            // Subscribe to event
+            return this.subscriptionService.fireEvent('delete', {
+                id: userDeleteDto.aggregateId,
+            });
         }
         return new RpcException('User not found');
     }

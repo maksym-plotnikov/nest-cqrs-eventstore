@@ -27,6 +27,7 @@ export class UserRepository {
 
     deleteUser(userDto) {
         const user = new User(userDto.id);
+        user.setData(userDto);
         user.deleteUser();
         return user;
     }

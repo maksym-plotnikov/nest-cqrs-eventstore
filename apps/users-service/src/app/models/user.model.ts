@@ -23,11 +23,11 @@ export class User extends AggregateRoot {
         this.apply(new UserUpdatedEvent(this.data));
     }
 
-    welcomeUser() {
-        this.apply(new UserWelcomedEvent(this.id));
+    deleteUser() {
+        this.apply(new UserDeletedEvent(this.data));
     }
 
-    deleteUser() {
-        this.apply(new UserDeletedEvent(this.id));
+    welcomeUser() {
+        this.apply(new UserWelcomedEvent(this.id));
     }
 }

@@ -14,7 +14,6 @@ export class UsersSagas {
             delay(1000),
             map((event: UserCreatedEvent) => {
                 Logger.log('Inside [UsersSagas] Saga', 'UsersSagas');
-                console.info(event);
                 return new WelcomeUserCommand(event.userDto.id);
             }),
         );

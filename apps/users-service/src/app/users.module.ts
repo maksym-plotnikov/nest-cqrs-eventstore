@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
 import { UsersController } from './controllers/users.controller';
 import { UsersService } from './services/users.service';
+import { SubscriptionEventService } from './services/subscription-event.service';
 import { UserRepository } from './repository/user.repository';
 import { ConfigService, EventStoreService } from '@smplct-view/shared/services';
 import { CommandHandlers } from './commands/handlers';
@@ -31,6 +32,7 @@ const config = new ConfigService(getEnvPath('users-service', process.env.NODE_EN
         EventStoreService,
         UserRepository,
         UsersService,
+        SubscriptionEventService,
         ...CommandHandlers,
         ...EventHandlers,
         ...QueryHandlers,
