@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { onsPlatform } from 'ngx-onsenui';
-import { AuthService } from '../../services/auth.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { isMobile } from 'src/app/utils';
 
 @Component({
     selector: 'ons-page[login-page]',
@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
 
     ngOnInit() {
         this.createForm();
-        this.mobile = this.isMobile();
+        this.mobile = isMobile();
     }
 
     async login() {
@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
                 ? await this.router.navigate(['mobile'])
                 : await this.router.navigate(['desktop']);
         } else {
-            return await Promise.reject('Could not login');
+            return Promise.reject('Could not login');
         }
     }
 
@@ -45,26 +45,10 @@ export class LoginPageComponent implements OnInit {
     }
 
     get user() {
-        return this.loginForm.get('user');
+        return this.loginForm.get('user') as FormControl;
     }
 
     get password() {
-        return this.loginForm.get('password');
-    }
-
-    isMobile() {
-        return this.getMobileOS() != 'other';
-    }
-
-    getMobileOS() {
-        if (onsPlatform.isAndroid()) {
-            return 'android';
-        } else if (onsPlatform.isIOS()) {
-            return 'ios';
-        } else if (onsPlatform.isWP()) {
-            return 'wp';
-        } else {
-            return 'other';
-        }
+        return this.loginForm.get('password') as FormControl;
     }
 }

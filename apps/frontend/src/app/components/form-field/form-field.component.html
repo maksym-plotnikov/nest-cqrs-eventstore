@@ -1,0 +1,60 @@
+<container-element [ngSwitch]="onsType" class="form-field-container">
+    <ons-input
+        #inputContainer
+        *ngSwitchCase="'input'"
+        [formControl]="formControl"
+    ></ons-input>
+    <ons-select #selectContainer *ngSwitchCase="'select'" [formControl]="formControl">
+        <option *ngFor="let item of selection" [value]="item[bindValue]">
+            {{ item[bindLabel] }}
+        </option>
+    </ons-select>
+    <ons-switch
+        *ngSwitchDefault
+        #switchContainer
+        (change)="handleChange($event)"
+    ></ons-switch>
+
+    <div
+        class="error-message"
+        *ngIf="formControl.touched && !formControl.valid"
+        [@inOutAnimation]
+    >
+        <ng-container *ngIf="formControl.errors && formControl.errors.required">
+            Field is required
+        </ng-container>
+        <ng-container *ngIf="formControl.errors && !formControl.errors.required">
+            <ng-container *ngFor="let obj of formControl.errors | keys">
+                <ng-container *ngIf="obj?.value?.errorMessage">{{
+                    obj.value.errorMessage
+                }}</ng-container>
+                <ng-container *ngIf="!obj?.value?.errorMessage" [ngSwitch]="obj.key">
+                    <ng-container *ngSwitchCase="'requiredTrue'"
+                        >Field must be checked</ng-container
+                    >
+                    <ng-container *ngSwitchCase="'min'"
+                        >Field min value is {{ obj.value.min }}</ng-container
+                    >
+                    <ng-container *ngSwitchCase="'max'"
+                        >Field max value is {{ obj.value.max }}</ng-container
+                    >
+                    <ng-container *ngSwitchCase="'maxlength'"
+                        >Field must be equal or less than
+                        {{ obj.value.requiredLength }}</ng-container
+                    >
+                    <ng-container *ngSwitchCase="'minlength'"
+                        >Field must be equal or bigger than
+                        {{ obj.value.requiredLength }}</ng-container
+                    >
+                    <ng-container *ngSwitchCase="'email'"
+                        >Invalid email address</ng-container
+                    >
+                    <ng-container *ngSwitchCase="'pattern'"
+                        >Field should match the pattern
+                        {{ obj.value.requiredPattern }}</ng-container
+                    >
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </div>
+</container-element>
