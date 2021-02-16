@@ -6,8 +6,8 @@ import { UserDto } from '../dtos/users.dto';
 import { UsersService } from '../services/users.service';
 import { EventBus, ofType } from '@nestjs/cqrs';
 import { UserCreatedEvent } from '../events/impl/user-created.event';
-import { UserWelcomedEvent } from '../events/impl/user-welcomed.event';
-// import { of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { UserUpdatedEvent } from '../events/impl/user-updated.event';
 
 @Controller('users')
 export class UsersController {
@@ -28,20 +28,23 @@ export class UsersController {
     @MessagePattern({ cmd: 'CreateUser' })
     async createUser(userDto: UserDto) {
         const state = await this.usersService.findUsers();
+        if (!userDto.email) {
+            return new RpcException('Wrong data structure');
+        }
         const user = Object.values(state).find(u => u?.email === userDto.email);
         if (user) return new RpcException('Email is already taken.');
+
         // We listen till all events will be processed
-        let event = null;
-        const response = new Promise(resolve => {
+        const id = uuidv4();
+        this.usersService.createUser({ id, ...userDto });
+        return new Promise(resolve =>
             this.events$
-                .pipe(ofType(UserCreatedEvent))
-                .subscribe(ev => (event = ev.userDto));
-            // Resolve only after last event
-            this.events$.pipe(ofType(UserWelcomedEvent)).subscribe(ev => resolve(ev));
-        });
-        await this.usersService.createUser({ id: uuidv4(), ...userDto });
-        await response;
-        return event;
+                .pipe(
+                    ofType(UserCreatedEvent),
+                    filter(ev => ev.userDto.id === id),
+                )
+                .subscribe(resolve),
+        );
     }
 
     /* Update User */
@@ -50,10 +53,19 @@ export class UsersController {
     async updateUser(userUpdateDto: UserUpdateDto) {
         const user = await this.usersService.findUser({ id: userUpdateDto.aggregateId });
         if (user) {
-            return this.usersService.updateUser({
+            this.usersService.updateUser({
                 id: userUpdateDto.aggregateId,
                 ...userUpdateDto.dto,
             });
+            return new Promise(resolve =>
+                this.events$
+                    .pipe(
+                        ofType(UserUpdatedEvent),
+                        filter(ev => ev.userDto.id === userUpdateDto.aggregateId),
+                        map(ev => ev.userDto),
+                    )
+                    .subscribe(resolve),
+            );
         }
         return new RpcException('User not found');
     }

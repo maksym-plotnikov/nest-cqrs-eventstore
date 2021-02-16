@@ -23,18 +23,18 @@ export class UsersService {
     }
 
     async updateUser(user: UserDto) {
-        return await this.commandBus.execute(new UpdateUserCommand(user));
+        return this.commandBus.execute(new UpdateUserCommand(user));
     }
 
     async deleteUser(user: UserIdRequestParamsDto) {
-        return await this.commandBus.execute(new DeleteUserCommand(user));
+        return this.commandBus.execute(new DeleteUserCommand(user));
     }
 
     async findUser(user: UserIdRequestParamsDto): Promise<UserDto> {
-        return await this.queryBus.execute(new FindUserQuery(user.id));
+        return this.queryBus.execute(new FindUserQuery(user.id));
     }
 
     async findUsers(): Promise<Record<string, UserDto>> {
-        return await this.queryBus.execute(new FindUsersQuery());
+        return this.queryBus.execute(new FindUsersQuery());
     }
 }
