@@ -18,13 +18,25 @@ body {
 
 // Add safe area to the bottom for IPhoneX+ for gesture bar
 @media (orientation: portrait) {
-    html[onsflag-iphonex-portrait-custom] .tabbar:not(.tabbar--top):not(.tabbar--top) {
-        padding-bottom: 34px;
+    html[onsflag-iphonex-portrait-custom] {
+        .tabbar:not(.tabbar--top):not(.tabbar--top) {
+            padding-bottom: 34px;
+        }
+
+        .tabbar__content {
+            bottom: calc(49px + 34px);
+        }
     }
 }
 
 @media (orientation: landscape) {
-    html[onsflag-iphonex-landscape-custom] .tabbar:not(.tabbar--top) {
-        padding-bottom: 21px;
+    html[onsflag-iphonex-landscape-custom] {
+        .tabbar:not(.tabbar--top) {
+            padding-bottom: 21px;
+        }
+
+        .tabbar__content {
+            bottom: calc(49px + 21px);
+        }
     }
 }

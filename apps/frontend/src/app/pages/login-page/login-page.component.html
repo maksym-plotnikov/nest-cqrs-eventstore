@@ -1,27 +1,28 @@
 <ons-page>
-    <div [formGroup]="loginForm" style="text-align: center; margin-top: 200px">
-        <p>
-            <ons-input
-                id="username"
-                placeholder="Username"
-                modifier="underbar"
-                formControlName="user"
-            ></ons-input>
-        </p>
+    <form [formGroup]="loginForm" class="form">
+        <smplct-view-form-field
+            onsType="input"
+            type="text"
+            placeholder="Username"
+            [formControl]="user"
+            [required]="true"
+        ></smplct-view-form-field>
 
-        <p>
-            <ons-input
-                id="password"
-                placeholder="Password"
-                type="password"
-                modifier="underbar"
-                formControlName="password"
-            >
-            </ons-input>
-        </p>
+        <smplct-view-form-field
+            id="password"
+            onsType="input"
+            placeholder="Password"
+            type="password"
+            [formControl]="password"
+            [required]="true"
+        >
+        </smplct-view-form-field>
 
-        <p>
-            <ons-button (click)="login()">Sign in</ons-button>
-        </p>
-    </div>
+        <ons-button
+            [disabled]="loginForm.pristine || loginForm.invalid"
+            class="submit-btn"
+            (click)="login()"
+            >Sign in</ons-button
+        >
+    </form>
 </ons-page>
