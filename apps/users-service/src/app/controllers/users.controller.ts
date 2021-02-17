@@ -42,14 +42,12 @@ export class UsersController {
     @MessagePattern({ cmd: 'UpdateUser' })
     async updateUser(userUpdateDto: UserUpdateDto) {
         const user = await this.usersService.findUser({ id: userUpdateDto.aggregateId });
-        if (user) {
-            // Subscribe to event
-            return this.subscriptionService.fireEvent('update', {
-                id: userUpdateDto.aggregateId,
-                ...userUpdateDto.dto,
-            });
-        }
-        return new RpcException('User not found');
+        if (!user) return new RpcException('User not found');
+        // Subscribe to event
+        return this.subscriptionService.fireEvent('update', {
+            id: userUpdateDto.aggregateId,
+            ...userUpdateDto.dto,
+        });
     }
 
     /* Delete User */
@@ -57,13 +55,11 @@ export class UsersController {
     @MessagePattern({ cmd: 'DeleteUser' })
     async deleteUser(userDeleteDto: UserDeleteDto) {
         const user = await this.usersService.findUser({ id: userDeleteDto.aggregateId });
-        if (user) {
-            // Subscribe to event
-            return this.subscriptionService.fireEvent('delete', {
-                id: userDeleteDto.aggregateId,
-            });
-        }
-        return new RpcException('User not found');
+        if (!user) return new RpcException('User not found');
+        // Subscribe to event
+        return this.subscriptionService.fireEvent('delete', {
+            id: userDeleteDto.aggregateId,
+        });
     }
 
     /* Find User By Id*/

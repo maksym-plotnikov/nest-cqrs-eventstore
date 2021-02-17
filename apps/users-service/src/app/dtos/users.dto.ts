@@ -9,17 +9,17 @@ export class UserIdRequestParamsDto {
 export class UserDto {
     @IsString()
     @IsNotEmpty()
-    readonly id!: string;
+    readonly id: string;
     @IsString()
-    readonly firstName!: string;
+    readonly firstName: string;
     @IsString()
-    readonly lastName!: string;
-    @IsString()
-    @IsNotEmpty()
-    readonly email!: string;
+    readonly lastName: string;
     @IsString()
     @IsNotEmpty()
-    readonly revisionId!: string;
+    readonly email: string;
+    @IsString()
+    @IsNotEmpty()
+    readonly revisionId: string;
 }
 
 export class UserDeleteDto {
