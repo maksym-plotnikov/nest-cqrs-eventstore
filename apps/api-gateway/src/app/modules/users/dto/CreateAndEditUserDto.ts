@@ -1,7 +1,7 @@
 import { IsString, IsNotEmpty, IsOptional, IsEmail } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { locales, RoleType } from '@smplct-view/shared/constants';
-import { IsUserRoles } from '@smplct-view/shared/api';
+import { locales, RoleType } from '@cqrs-nest-app/shared/constants';
+import { IsUserRoles } from '@cqrs-nest-app/shared/api';
 
 export class CreateAndEditUserDto {
     @IsOptional()

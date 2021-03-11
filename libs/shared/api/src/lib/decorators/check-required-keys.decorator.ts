@@ -1,4 +1,4 @@
-import { withModifiedToString, checkRequiredKeys } from '@smplct-view/shared/utils';
+import { withModifiedToString, checkRequiredKeys } from '@cqrs-nest-app/shared/utils';
 
 /**
  * Class method decorator

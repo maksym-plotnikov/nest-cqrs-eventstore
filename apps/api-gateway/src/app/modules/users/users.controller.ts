@@ -18,8 +18,8 @@ import {
 } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 // import { AuthUserInterceptor } from '../../interceptors';
-import { IResponseError, IServiceResponse } from '@smplct-view/shared/interfaces';
-import { ParamsWithIdDto, PlainResponseDto } from '@smplct-view/shared/api';
+import { IResponseError, IServiceResponse } from '@cqrs-nest-app/shared/interfaces';
+import { ParamsWithIdDto, PlainResponseDto } from '@cqrs-nest-app/shared/api';
 import { UserDto, CreateAndEditUserDto, CreateUserResponseErrorDto } from './dto';
 
 @Controller('users')

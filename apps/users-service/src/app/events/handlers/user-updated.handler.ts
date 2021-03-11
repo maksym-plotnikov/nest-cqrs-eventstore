@@ -1,9 +1,9 @@
 import { IEventHandler, EventsHandler } from '@nestjs/cqrs';
 import { Inject, Logger as Log } from '@nestjs/common';
 import { Logger } from 'winston';
-import { EventStoreService } from '@smplct-view/shared/services';
+import { EventStoreService } from '@cqrs-nest-app/shared/services';
 import { UserUpdatedEvent } from '../impl/user-updated.event';
-import { withModifiedToString } from '@smplct-view/shared/utils';
+import { withModifiedToString } from '@cqrs-nest-app/shared/utils';
 
 @EventsHandler(UserUpdatedEvent)
 export class UserUpdatedHandler implements IEventHandler<UserUpdatedEvent> {

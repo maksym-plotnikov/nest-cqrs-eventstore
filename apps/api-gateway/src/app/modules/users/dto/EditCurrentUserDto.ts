@@ -1,6 +1,6 @@
 import { IsString, IsNotEmpty, IsUUID, IsEmail } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { locales } from '@smplct-view/shared/constants';
+import { locales } from '@cqrs-nest-app/shared/constants';
 
 export class EditCurrentUserDto {
     @IsUUID()

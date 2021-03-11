@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ErrorSource } from '@smplct-view/shared/constants';
-import { BaseResponseError } from '@smplct-view/shared/api';
+import { ErrorSource } from '@cqrs-nest-app/shared/constants';
+import { BaseResponseError } from '@cqrs-nest-app/shared/api';
 import { HttpStatus } from '@nestjs/common';
 
 export class CreateUserResponseErrorDto extends BaseResponseError {

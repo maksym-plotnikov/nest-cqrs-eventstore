@@ -1,6 +1,6 @@
 import { IEventHandler, EventsHandler } from '@nestjs/cqrs';
 import { forwardRef, Inject, Logger } from '@nestjs/common';
-import { EventStoreService } from '@smplct-view/shared/services';
+import { EventStoreService } from '@cqrs-nest-app/shared/services';
 import { UserWelcomedEvent } from '../impl/user-welcomed.event';
 
 @EventsHandler(UserWelcomedEvent)

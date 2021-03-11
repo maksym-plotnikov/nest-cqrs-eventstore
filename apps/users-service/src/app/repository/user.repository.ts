@@ -3,7 +3,7 @@ import { User } from '../models/user.model';
 import {
     EventStoreService,
     EventStoreServiceConstants,
-} from '@smplct-view/shared/services';
+} from '@cqrs-nest-app/shared/services';
 import { ResolvedEvent } from '@eventstore/db-client';
 import { FindUserQuery } from '../queries/impl';
 
@@ -39,7 +39,7 @@ export class UserRepository {
     }
 
     async findOne(query: FindUserQuery): Promise<ResolvedEvent[]> {
-        const events = await this._es.readStream('reports_projection_result', {
+        const events = await this._es.readStream('users_projection_result', {
             direction: EventStoreServiceConstants.backwards,
             fromRevision: EventStoreServiceConstants.end,
             maxCount: 1,
@@ -48,7 +48,7 @@ export class UserRepository {
     }
 
     async findMany() {
-        const events = await this._es.readStream('reports_projection_result', {
+        const events = await this._es.readStream('users_projection_result', {
             direction: EventStoreServiceConstants.backwards,
             fromRevision: EventStoreServiceConstants.end,
             maxCount: 1,

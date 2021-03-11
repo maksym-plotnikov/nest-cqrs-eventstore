@@ -1,6 +1,6 @@
 import { IEventHandler, EventsHandler } from '@nestjs/cqrs';
 import { forwardRef, Inject, Logger } from '@nestjs/common';
-import { EventStoreService } from '@smplct-view/shared/services';
+import { EventStoreService } from '@cqrs-nest-app/shared/services';
 import { UserDeletedEvent } from '../impl/user-deleted.event';
 
 @EventsHandler(UserDeletedEvent)

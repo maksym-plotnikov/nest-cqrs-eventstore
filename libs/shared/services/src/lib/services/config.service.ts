@@ -3,10 +3,7 @@ import { ClientsModuleOptions, TcpOptions, Transport } from '@nestjs/microservic
 import * as dotenv from 'dotenv';
 import * as winston from 'winston';
 import { join } from 'path';
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { IAwsConfig } from '@smplct-view/shared/interfaces';
-import { SnakeNamingStrategy } from '@smplct-view/shared/utils';
-import { Microservices } from '@smplct-view/shared/constants';
+import { Microservices } from '@cqrs-nest-app/shared/constants';
 
 @Injectable()
 export class ConfigService {
@@ -90,36 +87,6 @@ export class ConfigService {
         return this.get('NODE_ENV') || 'development';
     }
 
-    get typeOrmConfig(): Promise<TypeOrmModuleOptions> | TypeOrmModuleOptions {
-        const entities = [this.path + '/app/**/*.entity{.ts,.js}'];
-        const migrations = [
-            __dirname + '/apps/backend/src/database/migrations/*{.ts,.js}',
-        ];
-
-        return {
-            entities,
-            migrations,
-            keepConnectionAlive: true,
-            type: 'postgres',
-            host: this.get('POSTGRES_HOST'),
-            port: this.getNumber('POSTGRES_PORT'),
-            username: this.get('POSTGRES_USERNAME'),
-            password: this.get('POSTGRES_PASSWORD'),
-            database: this.get('POSTGRES_DATABASE'),
-            migrationsRun: true,
-            logging: ['query', 'error', 'warn'],
-            cache: {
-                duration: 5000,
-                type: 'redis',
-                options: {
-                    host: '127.0.0.1',
-                    port: 6399,
-                },
-            },
-            namingStrategy: new SnakeNamingStrategy(),
-        };
-    }
-
     microServicesMappings() {
         return {
             USERS_SERVICE: { host: '127.0.0.1', port: 8888 },
@@ -138,23 +105,5 @@ export class ConfigService {
                 },
             }),
         );
-    }
-
-    get awsS3Config(): IAwsConfig {
-        return {
-            accessKeyId: this.get('AWS_S3_ACCESS_KEY_ID'),
-            secretAccessKey: this.get('AWS_S3_SECRET_ACCESS_KEY'),
-            bucketName: this.get('S3_BUCKET_NAME'),
-            region: this.get('S3_REGION'),
-        };
-    }
-
-    get awsEC2Config(): IAwsConfig {
-        return {
-            accessKeyId: this.get('AWS_S3_ACCESS_KEY_ID'),
-            secretAccessKey: this.get('AWS_S3_SECRET_ACCESS_KEY'),
-            region: this.get('S3_REGION'),
-            instanceId: this.get('AWS_INSTANCE_ID'),
-        };
     }
 }

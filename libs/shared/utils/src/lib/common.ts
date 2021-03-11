@@ -1,4 +1,4 @@
-import { IObjectWithToString } from '@smplct-view/shared/interfaces';
+import { IObjectWithToString } from '@cqrs-nest-app/shared/interfaces';
 import { join } from 'path';
 
 export const getEnvPath = (appName, env = 'development') =>

@@ -9,9 +9,8 @@ import { UsersService } from './services/users.service';
 import { UserRepository } from './repository/user.repository';
 import { ConfigModule } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
-import { ConfigService, EventStoreService } from '@smplct-view/shared/services';
-import { getEnvPath } from '@smplct-view/shared/utils';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigService, EventStoreService } from '@cqrs-nest-app/shared/services';
+import { getEnvPath } from '@cqrs-nest-app/shared/utils';
 
 const config = new ConfigService(getEnvPath('partners-service', process.env.NODE_ENV));
 
@@ -23,7 +22,6 @@ const config = new ConfigService(getEnvPath('partners-service', process.env.NODE
         }),
         CqrsModule,
         WinstonModule.forRoot(config.logConfig),
-        TypeOrmModule.forFeature([]),
     ],
     controllers: [UsersController],
     providers: [

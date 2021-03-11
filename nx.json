@@ -1,5 +1,5 @@
 {
-    "npmScope": "smplct-view",
+    "npmScope": "cqrs-nest-app",
     "affected": { "defaultBase": "main" },
     "implicitDependencies": {
         "workspace.json": "*",
@@ -16,9 +16,6 @@
         }
     },
     "projects": {
-        "backend": { "tags": [] },
-        "frontend": { "tags": [] },
-        "frontend-e2e": { "tags": [], "implicitDependencies": ["frontend"] },
         "shared-interfaces": { "tags": [] },
         "shared-constants": { "tags": [] },
         "api-gateway": { "tags": [] },

@@ -1,7 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 
-import { IResponseError } from '@smplct-view/shared/interfaces';
+import { IResponseError } from '@cqrs-nest-app/shared/interfaces';
 
 export class BaseResponseError implements IResponseError {
     @ApiProperty()

@@ -1,9 +1,9 @@
 import { IEventHandler, EventsHandler } from '@nestjs/cqrs';
 import { forwardRef, Inject, Logger as Log } from '@nestjs/common';
 import { Logger } from 'winston';
-import { EventStoreService } from '@smplct-view/shared/services';
+import { EventStoreService } from '@cqrs-nest-app/shared/services';
 import { UserWelcomedEvent } from '../impl/user-welcomed.event';
-import { withModifiedToString } from '@smplct-view/shared/utils';
+import { withModifiedToString } from '@cqrs-nest-app/shared/utils';
 
 @EventsHandler(UserWelcomedEvent)
 export class UserWelcomedHandler implements IEventHandler<UserWelcomedEvent> {

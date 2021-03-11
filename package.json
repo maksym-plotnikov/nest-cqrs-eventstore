@@ -1,5 +1,5 @@
 {
-    "name": "smplct-view",
+    "name": "cqrs-nest-app",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
@@ -8,8 +8,7 @@
         "build": "nx build",
         "test": "nx test",
         "lint": "nx workspace-lint && nx lint",
-        "lint:all": "nx run-many --target=lint --projects=frontend,backend,shared-interfaces,shared-constants",
-        "lint:styles": "npx stylelint \"apps/frontend/**/*.scss\" --cache --aei --max-warnings=0",
+        "lint:all": "nx run-many --target=lint --projects=api-gateway,patners-service,users-service,shared-interfaces,shared-constants",
         "e2e": "nx e2e",
         "affected:apps": "nx affected:apps",
         "affected:libs": "nx affected:libs",
@@ -26,31 +25,12 @@
         "workspace-generator": "nx workspace-generator",
         "dep-graph": "nx dep-graph",
         "help": "nx help",
-        "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-        "schema:drop": "scripty",
-        "schema:sync": "scripty",
-        "migration:create": "scripty",
-        "migration:generate": "scripty",
-        "migration:revert": "scripty",
-        "migration:run": "scripty",
         "eventstore:projections": "scripty",
-        "seed:run": "scripty",
-        "watch:dev": "nx run-many --target=serve --projects=api-gateway,users-service,partners-service,frontend --parallel --maxParallel=6",
-        "watch:e2e": "nx run-many --target=serve --projects=backend --parallel",
-        "build:all": "nx run-many --target=build --projects=frontend,backend --skip-nx-cache"
+        "watch:dev": "nx run-many --target=serve --projects=api-gateway,users-service,partners-service --parallel --maxParallel=6",
+        "build:all": "nx run-many --target=build --projects=api-gateway,patners-service,users-service --skip-nx-cache"
     },
     "private": true,
     "dependencies": {
-        "@angular/animations": "^11.0.0",
-        "@angular/cli": "^11.1.2",
-        "@angular/common": "^11.0.0",
-        "@angular/compiler": "^11.0.0",
-        "@angular/core": "^11.0.0",
-        "@angular/forms": "^11.0.0",
-        "@angular/platform-browser": "^11.0.0",
-        "@angular/platform-browser-dynamic": "^11.0.0",
-        "@angular/router": "^11.0.0",
-        "@angular/service-worker": "^11.1.1",
         "@eventstore/db-client": "^0.0.0-alpha.16",
         "@nestjs/common": "^7.0.0",
         "@nestjs/config": "^0.6.3",
@@ -87,8 +67,6 @@
         "make-promises-safe": "^5.1.0",
         "morgan": "^1.10.0",
         "nest-winston": "^1.4.0",
-        "ngx-onsenui": "^7.0.0",
-        "onsenui": "^2.11.2",
         "p-map": "^4.0.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
@@ -107,16 +85,8 @@
         "zone.js": "^0.11.3"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~0.1101.2",
-        "@angular-eslint/eslint-plugin": "^1.1.0",
-        "@angular-eslint/eslint-plugin-template": "^1.1.0",
-        "@angular-eslint/schematics": "^1.1.0",
-        "@angular-eslint/template-parser": "^1.1.0",
-        "@angular/compiler-cli": "^11.0.0",
-        "@angular/language-service": "^11.0.0",
         "@nestjs/schematics": "^7.0.0",
         "@nestjs/testing": "^7.0.0",
-        "@nrwl/angular": "^11.2.7",
         "@nrwl/cli": "11.2.7",
         "@nrwl/cypress": "11.2.7",
         "@nrwl/eslint-plugin-nx": "11.2.7",
@@ -157,7 +127,6 @@
     },
     "lint-staged": {
         "*.{ts,js}": "yarn affected:lint --max-warnings=0",
-        "*.{css,scss}": "npx stylelint \"apps/frontend/**/*.scss\" --cache --aei --max-warnings=0 --fix",
         "*.{ts,js,md,json}": "prettier --write"
     }
 }

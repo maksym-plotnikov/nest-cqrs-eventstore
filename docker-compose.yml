@@ -1,10 +1,10 @@
 version: '3'
 
 networks:
-  smplct_view_network:
+  cqrs-nest-app_network:
 
 services:
-  eventstore.db-viewapp:
+  eventstore.db-cqrs-nest-app:
     image: eventstore/eventstore:latest
     environment:
       - EVENTSTORE_CLUSTER_SIZE=1
@@ -22,27 +22,6 @@ services:
     volumes:
       - eventstore-volume-data:/var/lib/eventstore
       - eventstore-volume-logs:/var/log/eventstore
-  postgres-viewapp:
-    image: postgres:13.1
-    container_name: smplct_view_psql
-    ports:
-      - 5454:5432
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: smplct_view_app
-    volumes:
-      - ./.db-data:/var/lib/postgresql/data
-    networks:
-      - smplct_view_network
-  redis-viewapp:
-    image: redis:alpine
-    container_name: smplct_view_redis
-    ports:
-      - 6399:6379
-    command: redis-server
-    networks:
-      - smplct_view_network
 volumes:
   eventstore-volume-data:
   eventstore-volume-logs:

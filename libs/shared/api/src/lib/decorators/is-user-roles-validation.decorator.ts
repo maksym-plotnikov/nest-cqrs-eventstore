@@ -1,5 +1,5 @@
 import { registerDecorator, ValidationOptions } from 'class-validator';
-import { RoleType } from '@smplct-view/shared/constants';
+import { RoleType } from '@cqrs-nest-app/shared/constants';
 
 export function IsUserRoles(validationOptions?: ValidationOptions) {
     return (obj: Record<string, any>, propertyName: string) => {

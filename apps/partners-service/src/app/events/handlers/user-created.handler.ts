@@ -1,7 +1,7 @@
 import { IEventHandler, EventsHandler } from '@nestjs/cqrs';
 import { forwardRef, Inject, Logger } from '@nestjs/common';
 import { UserCreatedEvent } from '../impl/user-created.event';
-import { EventStoreService } from '@smplct-view/shared/services';
+import { EventStoreService } from '@cqrs-nest-app/shared/services';
 
 @EventsHandler(UserCreatedEvent)
 export class UserCreatedHandler implements IEventHandler<UserCreatedEvent> {

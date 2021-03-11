@@ -1,18 +1,17 @@
 import { OnModuleInit, Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
 import { UsersController } from './controllers/users.controller';
 import { UsersService } from './services/users.service';
 import { SubscriptionEventService } from './services/subscription-event.service';
 import { UserRepository } from './repository/user.repository';
-import { ConfigService, EventStoreService } from '@smplct-view/shared/services';
+import { ConfigService, EventStoreService } from '@cqrs-nest-app/shared/services';
 import { CommandHandlers } from './commands/handlers';
 import { EventHandlers } from './events/handlers';
 import { QueryHandlers } from './queries/handlers';
 import { UsersSagas } from './sagas/users.sagas';
-import { getEnvPath } from '@smplct-view/shared/utils';
+import { getEnvPath } from '@cqrs-nest-app/shared/utils';
 
 const config = new ConfigService(getEnvPath('users-service', process.env.NODE_ENV));
 
@@ -24,7 +23,6 @@ const config = new ConfigService(getEnvPath('users-service', process.env.NODE_EN
         }),
         CqrsModule,
         WinstonModule.forRoot(config.logConfig),
-        TypeOrmModule.forFeature([]),
     ],
     controllers: [UsersController],
     providers: [

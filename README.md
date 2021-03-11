@@ -1,4 +1,12 @@
-# Simplicity View App
+# Nest CQRS App
+
+
+Run 
+```
+./docker-start.sh
+```
+to start the project.
+
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -43,7 +51,7 @@ Run `nx g @nrwl/react:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
-Libraries are shareable across libraries and applications. They can be imported from `@smplct-view/mylib`.
+Libraries are shareable across libraries and applications. They can be imported from `@cqrs-nest-app/mylib`.
 
 ## Development server
 

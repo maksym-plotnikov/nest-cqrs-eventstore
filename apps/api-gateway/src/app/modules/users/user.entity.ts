@@ -1,9 +1,9 @@
 import { IsOptional, IsString, IsNotEmpty, MaxLength, IsEmail } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { IUser } from '@smplct-view/shared/interfaces';
+import { IUser } from '@cqrs-nest-app/shared/interfaces';
 import { UserDto } from './dto';
-import { RoleType, locales } from '@smplct-view/shared/constants';
-import { IsUserRoles } from '@smplct-view/shared/api';
+import { RoleType, locales } from '@cqrs-nest-app/shared/constants';
+import { IsUserRoles } from '@cqrs-nest-app/shared/api';
 
 export class User extends UserDto implements IUser {
     @IsOptional()

@@ -1,8 +1,8 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 import { User } from '../user.entity';
-import { AbstractDto, IsUserRoles } from '@smplct-view/shared/api';
-import { locales, RoleType } from '@smplct-view/shared/constants';
+import { AbstractDto, IsUserRoles } from '@cqrs-nest-app/shared/api';
+import { locales, RoleType } from '@cqrs-nest-app/shared/constants';
 
 export class UserDto extends AbstractDto {
     @ApiPropertyOptional()

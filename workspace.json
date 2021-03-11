@@ -1,186 +1,23 @@
 {
     "version": 2,
-    "cli": {
-        "defaultCollection": "@nrwl/nest",
-        "packageManager": "yarn"
+    "cli": { "defaultCollection": "@nrwl/nest", "packageManager": "yarn" },
+    "generators": {
+        "@nrwl/angular:application": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress",
+            "strict": true
+        },
+        "@nrwl/angular:library": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "strict": true
+        },
+        "@nrwl/angular:component": { "style": "scss" }
     },
-    "defaultProject": "backend",
     "projects": {
-        "backend": {
-            "root": "apps/backend",
-            "sourceRoot": "apps/backend",
-            "projectType": "application",
-            "prefix": "backend",
-            "targets": {
-                "build": {
-                    "executor": "@nrwl/node:build",
-                    "outputs": ["{options.outputPath}"],
-                    "options": {
-                        "outputPath": "dist/apps/backend",
-                        "main": "apps/backend/main.ts",
-                        "tsConfig": "apps/backend/tsconfig.app.json",
-                        "showCircularDependencies": false
-                    },
-                    "configurations": {
-                        "production": {
-                            "optimization": true,
-                            "extractLicenses": true,
-                            "inspect": false,
-                            "fileReplacements": [
-                                {
-                                    "replace": "apps/backend/environments/environment.ts",
-                                    "with": "apps/backend/environments/environment.prod.ts"
-                                }
-                            ]
-                        }
-                    }
-                },
-                "serve": {
-                    "executor": "@nrwl/node:execute",
-                    "options": {
-                        "buildTarget": "backend:build"
-                    }
-                },
-                "lint": {
-                    "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["apps/backend/**/*.ts"]
-                    }
-                },
-                "test": {
-                    "executor": "@nrwl/jest:jest",
-                    "outputs": ["coverage/apps/backend"],
-                    "options": {
-                        "jestConfig": "apps/backend/jest.config.js",
-                        "passWithNoTests": true
-                    }
-                }
-            }
-        },
-        "frontend": {
-            "projectType": "application",
-            "root": "apps/frontend",
-            "sourceRoot": "apps/frontend/src",
-            "prefix": "smplct-view",
-            "targets": {
-                "build": {
-                    "executor": "@angular-devkit/build-angular:browser",
-                    "options": {
-                        "outputPath": "dist/apps/frontend",
-                        "index": "apps/frontend/src/index.html",
-                        "main": "apps/frontend/src/main.ts",
-                        "polyfills": "apps/frontend/src/polyfills.ts",
-                        "tsConfig": "apps/frontend/tsconfig.app.json",
-                        "showCircularDependencies": false,
-                        "aot": true,
-                        "assets": [
-                            "apps/frontend/src/favicon.ico",
-                            "apps/frontend/src/assets",
-                            "apps/frontend/src/manifest.webmanifest"
-                        ],
-                        "styles": [
-                            "node_modules/onsenui/css/onsenui.css",
-                            "node_modules/onsenui/css/onsen-css-components.css",
-                            "apps/frontend/src/styles.scss"
-                        ],
-                        "scripts": []
-                    },
-                    "configurations": {
-                        "production": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "apps/frontend/src/environments/environment.ts",
-                                    "with": "apps/frontend/src/environments/environment.prod.ts"
-                                }
-                            ],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
-                                }
-                            ],
-                            "serviceWorker": true,
-                            "ngswConfigPath": "apps/frontend/ngsw-config.json"
-                        }
-                    }
-                },
-                "serve": {
-                    "executor": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "frontend:build",
-                        "proxyConfig": "apps/frontend/proxy.conf.json",
-                        "host": "0.0.0.0"
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "frontend:build:production"
-                        }
-                    }
-                },
-                "extract-i18n": {
-                    "executor": "@angular-devkit/build-angular:extract-i18n",
-                    "options": {
-                        "browserTarget": "frontend:build"
-                    }
-                },
-                "lint": {
-                    "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": [
-                            "apps/frontend/src/**/*.ts",
-                            "apps/frontend/src/**/*.html"
-                        ]
-                    }
-                },
-                "test": {
-                    "executor": "@nrwl/jest:jest",
-                    "outputs": ["coverage/apps/frontend"],
-                    "options": {
-                        "jestConfig": "apps/frontend/jest.config.js",
-                        "passWithNoTests": true
-                    }
-                }
-            }
-        },
-        "frontend-e2e": {
-            "root": "apps/frontend-e2e",
-            "sourceRoot": "apps/frontend-e2e/src",
-            "projectType": "application",
-            "targets": {
-                "e2e": {
-                    "executor": "@nrwl/cypress:cypress",
-                    "options": {
-                        "cypressConfig": "apps/frontend-e2e/cypress.json",
-                        "tsConfig": "apps/frontend-e2e/tsconfig.e2e.json",
-                        "devServerTarget": "frontend:serve"
-                    },
-                    "configurations": {
-                        "production": {
-                            "devServerTarget": "frontend:serve:production"
-                        }
-                    }
-                },
-                "lint": {
-                    "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["apps/frontend-e2e/**/*.{js,ts}"]
-                    }
-                }
-            }
-        },
         "shared-interfaces": {
             "root": "libs/shared/interfaces",
             "sourceRoot": "libs/shared/interfaces/src",
@@ -188,9 +25,7 @@
             "targets": {
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["libs/shared/interfaces/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["libs/shared/interfaces/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -209,9 +44,7 @@
             "targets": {
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["libs/shared/constants/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["libs/shared/constants/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -254,15 +87,11 @@
                 },
                 "serve": {
                     "executor": "@nrwl/node:execute",
-                    "options": {
-                        "buildTarget": "api-gateway:build"
-                    }
+                    "options": { "buildTarget": "api-gateway:build" }
                 },
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["apps/api-gateway/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["apps/api-gateway/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -304,15 +133,11 @@
                 },
                 "serve": {
                     "executor": "@nrwl/node:execute",
-                    "options": {
-                        "buildTarget": "users-service:build"
-                    }
+                    "options": { "buildTarget": "users-service:build" }
                 },
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["apps/users-service/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["apps/users-service/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -354,15 +179,11 @@
                 },
                 "serve": {
                     "executor": "@nrwl/node:execute",
-                    "options": {
-                        "buildTarget": "partners-service:build"
-                    }
+                    "options": { "buildTarget": "partners-service:build" }
                 },
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["apps/partners-service/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["apps/partners-service/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -381,9 +202,7 @@
             "targets": {
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["libs/shared/services/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["libs/shared/services/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -402,9 +221,7 @@
             "targets": {
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["libs/shared/utils/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["libs/shared/utils/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -423,9 +240,7 @@
             "targets": {
                 "lint": {
                     "executor": "@nrwl/linter:eslint",
-                    "options": {
-                        "lintFilePatterns": ["libs/shared/api/**/*.ts"]
-                    }
+                    "options": { "lintFilePatterns": ["libs/shared/api/**/*.ts"] }
                 },
                 "test": {
                     "executor": "@nrwl/jest:jest",
@@ -436,24 +251,6 @@
                     }
                 }
             }
-        }
-    },
-    "generators": {
-        "@nrwl/angular:application": {
-            "style": "scss",
-            "linter": "eslint",
-            "unitTestRunner": "jest",
-            "e2eTestRunner": "cypress",
-            "strict": true
-        },
-        "@nrwl/angular:library": {
-            "style": "scss",
-            "linter": "eslint",
-            "unitTestRunner": "jest",
-            "strict": true
-        },
-        "@nrwl/angular:component": {
-            "style": "scss"
         }
     }
 }

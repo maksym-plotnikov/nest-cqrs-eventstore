@@ -1,7 +1,7 @@
 import { JwtModule } from '@nestjs/jwt';
 import { Module, Global, HttpModule } from '@nestjs/common';
-import { ConfigService } from '@smplct-view/shared/services';
-import { getEnvPath } from '@smplct-view/shared/utils';
+import { ConfigService } from '@cqrs-nest-app/shared/services';
+import { getEnvPath } from '@cqrs-nest-app/shared/utils';
 
 const _config = new ConfigService(getEnvPath('users-service', process.env.NODE_ENV));
 

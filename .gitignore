@@ -42,7 +42,6 @@ Thumbs.db
 /.db-data
 
 /apps/*/logs/*
-!/apps/backend/logs/.gitkeep
 /apps/*/*.env
 /.eslintcache
 /.stylelintcache

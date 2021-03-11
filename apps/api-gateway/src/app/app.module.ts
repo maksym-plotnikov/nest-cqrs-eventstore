@@ -5,8 +5,8 @@ import { UsersModule } from './modules/users/users.module';
 import { AppService } from './app.service';
 import { WinstonModule } from 'nest-winston';
 import { SharedModule } from './shared.module';
-import { ConfigService } from '@smplct-view/shared/services';
-import { getEnvPath } from '@smplct-view/shared/utils';
+import { ConfigService } from '@cqrs-nest-app/shared/services';
+import { getEnvPath } from '@cqrs-nest-app/shared/utils';
 
 const _config = new ConfigService(getEnvPath('api-gateway', process.env.NODE_ENV));
 

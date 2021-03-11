@@ -1,4 +1,4 @@
 import { SetMetadata } from '@nestjs/common';
-import { RoleType } from '@smplct-view/shared/constants';
+import { RoleType } from '@cqrs-nest-app/shared/constants';
 
 export const Roles = (...roles: RoleType[]) => SetMetadata('roles', roles);
